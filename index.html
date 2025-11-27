@@ -116,7 +116,7 @@
         }
 
         .demo-section .demo-inner {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
         }
 
@@ -131,13 +131,29 @@
             color: var(--cosmo-blue);
         }
 
+        .demo-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-case {
+            background: var(--cosmo-blue);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
         .demo-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1100px) {
             .demo-container {
                 grid-template-columns: 1fr;
             }
@@ -220,21 +236,27 @@
 
         .chat-area {
             flex: 1;
-            padding: 1rem;
+            padding: 0.8rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-            min-height: 400px;
-            max-height: 400px;
+            gap: 0.4rem;
+            min-height: 450px;
+            max-height: 450px;
+        }
+
+        .message-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
         }
 
         .message {
-            max-width: 85%;
-            padding: 0.6rem 0.9rem;
+            max-width: 88%;
+            padding: 0.5rem 0.8rem;
             border-radius: 8px;
-            font-size: 0.9rem;
-            line-height: 1.4;
+            font-size: 0.8rem;
+            line-height: 1.35;
             position: relative;
             animation: messageIn 0.3s ease-out;
             color: #303030;
@@ -269,9 +291,9 @@
 
         .message .agent-name {
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--cosmo-pink);
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
 
         .message.bot.leti .agent-name {
@@ -279,24 +301,71 @@
         }
 
         .message-time {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: #999;
             text-align: right;
-            margin-top: 0.2rem;
+            margin-top: 0.15rem;
+        }
+
+        /* Thought Bubble */
+        .thought-bubble {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 0.4rem 0.7rem;
+            font-size: 0.75rem;
+            color: #92400e;
+            animation: thoughtIn 0.4s ease-out;
+            max-width: 70%;
+            position: relative;
+            margin-left: auto;
+        }
+
+        .thought-bubble::before {
+            content: '💭';
+            position: absolute;
+            left: -1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1rem;
+        }
+
+        .thought-bubble.negative {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .thought-bubble.positive {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border-color: #22c55e;
+            color: #166534;
+        }
+
+        @keyframes thoughtIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .typing-indicator {
             background: white;
-            padding: 0.8rem 1rem;
+            padding: 0.6rem 0.8rem;
             border-radius: 8px;
             align-self: flex-start;
             display: flex;
-            gap: 0.3rem;
+            gap: 0.25rem;
         }
 
         .typing-indicator span {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background: #999;
             border-radius: 50%;
             animation: typing 1.4s infinite ease-in-out;
@@ -315,7 +384,7 @@
                 transform: translateY(0);
             }
             30% {
-                transform: translateY(-5px);
+                transform: translateY(-4px);
             }
         }
 
@@ -324,19 +393,19 @@
             display: flex;
             gap: 1rem;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1rem;
             background: var(--bg-cream);
             border-radius: 0 0 20px 20px;
         }
 
         .btn {
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.3rem;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-family: 'DM Sans', sans-serif;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
@@ -367,32 +436,101 @@
             border-color: var(--cosmo-pink);
         }
 
-        /* Result Badge */
-        .result-badge {
-            text-align: center;
+        /* Metrics Cards */
+        .metrics-card {
+            margin-top: 1rem;
             padding: 1rem;
-            font-weight: 600;
-            font-size: 0.95rem;
+            border-radius: 12px;
+            display: none;
             animation: fadeIn 0.5s ease-out;
         }
 
+        .metrics-card.visible {
+            display: block;
+        }
+
+        .metrics-card.negative {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 1px solid #ef4444;
+        }
+
+        .metrics-card.positive {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 1px solid #22c55e;
+        }
+
+        .metrics-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .metrics-card.negative .metrics-title {
+            color: #991b1b;
+        }
+
+        .metrics-card.positive .metrics-title {
+            color: #166534;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+
+        .metric-item {
+            text-align: center;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .metrics-card.negative .metric-value {
+            color: #dc2626;
+        }
+
+        .metrics-card.positive .metric-value {
+            color: #16a34a;
+        }
+
+        .metric-label {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 0.2rem;
+        }
+
+        .metrics-result {
+            margin-top: 0.8rem;
+            padding: 0.6rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .metrics-card.negative .metrics-result {
+            background: #dc2626;
+            color: white;
+        }
+
+        .metrics-card.positive .metrics-result {
+            background: #16a34a;
+            color: white;
+        }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .result-badge.lost {
-            color: var(--error-red);
-            background: rgba(239, 68, 68, 0.1);
-            border-radius: 8px;
-            margin: 0.5rem 1rem;
-        }
-
-        .result-badge.won {
-            color: var(--success-green);
-            background: rgba(34, 197, 94, 0.1);
-            border-radius: 8px;
-            margin: 0.5rem 1rem;
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Problems Section */
@@ -562,7 +700,7 @@
 
         /* Scrollbar */
         .chat-area::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
 
         .chat-area::-webkit-scrollbar-track {
@@ -606,13 +744,16 @@
         <div class="demo-inner">
         <div class="demo-header">
             <h2>Compara la experiencia</h2>
-            <p style="color: var(--text-muted);">Reproduce ambos escenarios para ver la diferencia</p>
+            <p class="demo-subtitle">Reproduce ambos escenarios para ver la diferencia</p>
+            <div class="demo-case">
+                📋 <strong>Caso:</strong> Mamá Camila busca cupo para Juliana · Grado 9° · Barrio Colombia · Jornada Mañana
+            </div>
         </div>
 
         <div class="demo-container">
             <!-- BEFORE: Bot Actual -->
             <div class="phone-mockup before">
-                <div class="phone-header">❌ Bot Actual</div>
+                <div class="phone-header">❌ Bot Actual (Flujo Real)</div>
                 <div class="whatsapp-container">
                     <div class="whatsapp-header">
                         <div class="whatsapp-avatar">🏫</div>
@@ -627,11 +768,41 @@
                         <button class="btn btn-reset" id="reset-before">🔄 Reiniciar</button>
                     </div>
                 </div>
+                <div class="metrics-card negative" id="metrics-before">
+                    <div class="metrics-title">📊 Resultado del Bot Actual</div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">15+ min</div>
+                            <div class="metric-label">Tiempo</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">24</div>
+                            <div class="metric-label">Preguntas</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">12+</div>
+                            <div class="metric-label">Datos sensibles</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">0</div>
+                            <div class="metric-label">Alternativas</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">😡</div>
+                            <div class="metric-label">Sentimiento</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">❌</div>
+                            <div class="metric-label">Conversión</div>
+                        </div>
+                    </div>
+                    <div class="metrics-result">❌ "Espere varios días" - LEAD PERDIDO</div>
+                </div>
             </div>
 
             <!-- AFTER: Agentes IA -->
             <div class="phone-mockup after">
-                <div class="phone-header">✅ Agentes IA</div>
+                <div class="phone-header">✅ Agentes IA (Nuestra Propuesta)</div>
                 <div class="whatsapp-container">
                     <div class="whatsapp-header">
                         <div class="whatsapp-avatar">🤖</div>
@@ -646,6 +817,36 @@
                         <button class="btn btn-reset" id="reset-after">🔄 Reiniciar</button>
                     </div>
                 </div>
+                <div class="metrics-card positive" id="metrics-after">
+                    <div class="metrics-title">📊 Resultado con Agentes IA</div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-value">2 min</div>
+                            <div class="metric-label">Tiempo</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">3</div>
+                            <div class="metric-label">Preguntas</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">Datos mínimos</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">2</div>
+                            <div class="metric-label">Alternativas</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">🎉</div>
+                            <div class="metric-label">Sentimiento</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">✅</div>
+                            <div class="metric-label">Conversión</div>
+                        </div>
+                    </div>
+                    <div class="metrics-result">✅ INMERSIÓN AGENDADA - LEAD CONVERTIDO</div>
+                </div>
             </div>
         </div>
         </div>
@@ -656,22 +857,22 @@
         <h2>Los 3 problemas que resolvemos</h2>
         <div class="problems-grid">
             <div class="problem-card">
-                <div class="problem-icon">🤖</div>
-                <h3>1. Rigidez del bot actual</h3>
-                <p>El bot solo sigue scripts predefinidos. Si no hay disponibilidad exacta, no ofrece alternativas y pierde el lead.</p>
-                <div class="problem-solution">✅ Juli entiende contexto y ofrece opciones cercanas automáticamente</div>
+                <div class="problem-icon">📋</div>
+                <h3>1. Formulario interminable</h3>
+                <p>24 preguntas antes de saber si hay cupo. Datos sensibles (ingresos, discapacidad) pedidos innecesariamente al inicio.</p>
+                <div class="problem-solution">✅ Juli verifica disponibilidad PRIMERO, solo pide datos al agendar</div>
             </div>
             <div class="problem-card">
-                <div class="problem-icon">📚</div>
-                <h3>2. No educan sobre el valor</h3>
-                <p>Los padres no conocen la metodología, las inmersiones ni los diferenciadores de cada sede.</p>
-                <div class="problem-solution">✅ Juli explica beneficios y diferencias según las necesidades de cada familia</div>
+                <div class="problem-icon">🚫</div>
+                <h3>2. Sin alternativas</h3>
+                <p>Si no hay cupo exacto: "Espere varios días". Cero opciones, cero educación sobre otras sedes o jornadas.</p>
+                <div class="problem-solution">✅ Juli ofrece 2+ alternativas cercanas con diferenciadores claros</div>
             </div>
             <div class="problem-card">
-                <div class="problem-icon">🔔</div>
-                <h3>3. Sin seguimiento proactivo</h3>
-                <p>Una vez el padre dice "lo pienso", nadie hace follow-up. El 86% de leads se enfría.</p>
-                <div class="problem-solution">✅ Leti agenda, confirma y envía recordatorios automáticos antes de cada cita</div>
+                <div class="problem-icon">😤</div>
+                <h3>3. Experiencia frustrante</h3>
+                <p>15+ minutos de preguntas para terminar en "REVISIÓN". El 86% de leads abandona antes de terminar.</p>
+                <div class="problem-solution">✅ 2 minutos hasta inmersión agendada. Sentimiento positivo constante</div>
             </div>
         </div>
     </section>
@@ -717,41 +918,139 @@
     </footer>
 
     <script>
-        // Conversation data
+        // CONVERSATION BEFORE - Real Cosmo Bot Flow
         const conversationBefore = [
-            { type: 'user', text: 'Hola, busco cupo para mi hijo de 5 años en Barrio Colombia, jornada mañana' },
-            { type: 'bot', text: '¡Hola! Gracias por contactar a Cosmo Schools 🌟' },
-            { type: 'bot', text: 'No tenemos disponibilidad en esa sede/jornada.' },
-            { type: 'bot', text: 'Te agregamos a lista de espera. Te contactaremos si hay novedades.' },
-            { type: 'user', text: '¿No hay otra opción cerca?' },
-            { type: 'bot', text: 'Revisa disponibilidad en www.cosmo.edu.co' },
-            { type: 'user', text: 'Ok gracias...' },
-            { type: 'result', status: 'lost', text: '❌ LEAD PERDIDO' }
+            { type: 'bot', text: '¡Hola! Bienvenida a Cosmo Schools 🎒\n\nEn este chat te acompañaremos en tu Ruta de Admisión.\n\n👇 Para continuar, acepta la Autorización para el tratamiento de datos personales.\n\n[1. Acepto] [2. No acepto]' },
+            { type: 'user', text: '1' },
+            { type: 'thought', emoji: '😊', text: 'Ok, empecemos...', sentiment: 'neutral' },
+
+            { type: 'bot', text: 'Para iniciar tu proceso de admisión, te pediremos algunos datos.\n\n🎓 ¿Cómo te llamas? Escribe el NOMBRE y APELLIDO del acudiente' },
+            { type: 'user', text: 'Camila Uribe' },
+
+            { type: 'bot', text: '💼 Escribe tu correo electrónico' },
+            { type: 'user', text: 'camila@email.com' },
+
+            { type: 'bot', text: '🎴 Selecciona el tipo de documento de identidad\n\n1. Cédula de ciudadanía\n2. Cédula de extranjería\n3. Pasaporte\n4. PEP\n5. PPT' },
+            { type: 'user', text: '1' },
+            { type: 'thought', emoji: '😐', text: 'Muchas opciones técnicas...', sentiment: 'neutral' },
+
+            { type: 'bot', text: '🎴 Escribe el número de doc. de identidad' },
+            { type: 'user', text: '1037626987' },
+
+            { type: 'bot', text: '🎤 ¿Cómo te enteraste de Cosmo?\n\n1. Me lo recomendó alguien\n2. Redes sociales\n3. Comfama\n4. Mi empresa\n5. Vi la sede\n6. Sitio web\n7. Vallas/folletos\n8. Radio\n9. Evento\n10. Búsqueda internet' },
+            { type: 'user', text: '1' },
+            { type: 'thought', emoji: '🤔', text: '¿10 opciones? ¿Y esto para qué?', sentiment: 'negative' },
+
+            { type: 'bot', text: '👶 ¿Cómo se llama el aspirante?\nEscribe NOMBRE y APELLIDOS' },
+            { type: 'user', text: 'Juliana' },
+
+            { type: 'bot', text: '🎴 Elige el tipo de doc. del aspirante\n\n1. Tarjeta identidad\n2. Registro civil\n3. NUI\n4. Pasaporte\n5. PEP\n6. PPT\n7. Céd. extranjería\n8. Cédula ciudadanía' },
+            { type: 'user', text: '1' },
+            { type: 'thought', emoji: '😤', text: '¿Otra vez 8 opciones? ¿Y todavía no sé si hay cupo?', sentiment: 'negative' },
+
+            { type: 'bot', text: '🎴 Escribe el número del doc. de identidad del aspirante' },
+            { type: 'user', text: '1037262441' },
+
+            { type: 'bot', text: '📅 ¿Cuál es la fecha de nacimiento del aspirante?' },
+            { type: 'user', text: '01/01/2011' },
+
+            { type: 'bot', text: '📍 Escribe el municipio y la dirección de residencia' },
+            { type: 'user', text: 'Cl. 27, #45-16, Medellín' },
+            { type: 'thought', emoji: '😤', text: 'Ya van como 10 preguntas y NO SÉ SI HAY CUPO', sentiment: 'negative' },
+
+            { type: 'bot', text: '👤 ¿Cuál es el género del aspirante?\n[Femenino] [Masculino]' },
+            { type: 'user', text: 'Femenino' },
+
+            { type: 'bot', text: '🏫 ¿Dónde estudia actualmente o cómo se llama la última institución?' },
+            { type: 'user', text: 'Colegio Calasanz' },
+
+            { type: 'bot', text: '🏫 ¿La Institución es pública o privada?\n[Privada] [Pública] [No aplica]' },
+            { type: 'user', text: 'Privada' },
+
+            { type: 'bot', text: '👨‍👩‍👧 ¿Cuál será la principal fuente de financiación para la educación en Cosmo?' },
+            { type: 'user', text: 'Ingresos (trabajo)' },
+            { type: 'thought', emoji: '😰', text: '¿Mis ingresos? ¿Para qué necesitan saber esto ANTES de decirme si hay cupo?', sentiment: 'negative' },
+
+            { type: 'bot', text: '💰 ¿Cuáles son los ingresos mensuales de tu familia?\n\n1. Menos de $1.300.000\n2. $1.3M - $3M\n3. $3M - $5M\n4. $5M - $8M\n5. Más de $8M' },
+            { type: 'user', text: '2' },
+
+            { type: 'bot', text: '🌟 ¿El aspirante tiene alguna capacidad excepcional?\n\n1. No aplica\n2. Talento tecnología\n3. Liderazgo social\n4. Ciencias naturales\n5. Artes/letras\n6. Actividad física\n7. Ciencias sociales\n8. Doble excepcionalidad' },
+            { type: 'user', text: '1' },
+            { type: 'thought', emoji: '😰', text: '¿¿8 opciones más?? Esto no termina...', sentiment: 'negative' },
+
+            { type: 'bot', text: '👂 ¿El aspirante tiene alguna condición de discapacidad?\n\n1. No aplica\n2. Ceguera\n3. Baja visión\n4. Lengua señas\n5. Uso audífono\n6. Implante coclear' },
+            { type: 'user', text: '1' },
+
+            { type: 'bot', text: '🧠 ¿Tiene algún trastorno específico de aprendizaje?\n\n1. No aplica\n2. Espectro autista\n3. Psicosocial/desafiante\n4. Déficit de atención' },
+            { type: 'user', text: '1' },
+
+            { type: 'bot', text: '🎒 Elige el grado (según edad del aspirante en 2026)' },
+            { type: 'user', text: 'Noveno' },
+
+            { type: 'bot', text: '📍 Selecciona la sede de Cosmo de tu interés' },
+            { type: 'user', text: 'Barrio Colombia' },
+            { type: 'thought', emoji: '😤', text: '¡POR FIN! Ya casi...', sentiment: 'negative' },
+
+            { type: 'bot', text: '☀️ En Cosmo contamos con dos jornadas escolares.\n¿Cuál prefieres? [AM] [PM]' },
+            { type: 'user', text: 'AM' },
+
+            { type: 'bot', text: '📋 Estos son tus datos de registro en el proceso de admisión en Cosmo 2026.\n¿Están bien? [Están bien] [Corregir dato]' },
+            { type: 'user', text: 'Están bien' },
+
+            { type: 'bot', text: '⚠️ El proceso de admisión para Juliana se encuentra en REVISIÓN por parte del equipo de admisiones.\n\nEste proceso tomará VARIOS DÍAS debido al alto volumen de solicitudes.\n\n❌ NO ES POSIBLE realizar un pago del PIN de registro, ya que no se ha confirmado la disponibilidad de un cupo.' },
+            { type: 'thought', emoji: '😡🤯', text: '¿¿¿20+ PREGUNTAS, 15 MIN, MIS DATOS PERSONALES, TODO PARA "ESPERE DÍAS"??? ¿¿¿SIN NINGUNA ALTERNATIVA???', sentiment: 'negative' },
         ];
 
+        // CONVERSATION AFTER - AI Agents Flow
         const conversationAfter = [
-            { type: 'user', text: 'Hola, busco cupo para mi hijo de 5 años en Barrio Colombia, jornada mañana' },
-            { type: 'bot', agent: 'Juli 🤖', text: '¡Hola! Qué emoción que consideres Cosmo para la educación de tu pequeño. Déjame revisar opciones para ti...' },
-            { type: 'bot', agent: 'Juli 🤖', text: 'Barrio Colombia en la mañana está lleno, pero tengo 2 alternativas perfectas:\n\n✅ Barrio Colombia TARDE: 3 cupos disponibles\n✅ Sede Poblado: a solo 12 min, jornada mañana disponible\n\n¿Cuál te gustaría explorar?' },
-            { type: 'user', text: 'No sabía lo de Poblado, ¿qué diferencia hay?' },
-            { type: 'bot', agent: 'Juli 🤖', text: 'Ambas tienen la misma metodología Cosmo que nos hace únicos. Poblado tiene más área verde y un huerto escolar donde los niños aprenden sobre naturaleza. 🌱\n\n¿Te gustaría agendar una inmersión gratuita para que tu hijo lo experimente?' },
-            { type: 'user', text: 'Sí, ¿qué es la inmersión?' },
-            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Hola! Soy Leti, te ayudo con la agenda. 📅\n\nLa inmersión es un día donde tu hijo participa en actividades normales del colegio: clases, recreo y almuerzo. ¡Es gratis!\n\nTengo estos horarios:\n📅 Martes 3 dic - 8am\n📅 Jueves 5 dic - 8am\n\n¿Cuál prefieres?' },
+            { type: 'bot', agent: 'Juli 🤖', text: '¡Hola! Soy Juli, tu asesora en Cosmo 🌟\n\n¿Para qué grado y sede estás buscando cupo?' },
+            { type: 'thought', emoji: '😊', text: 'Directo al punto, me gusta', sentiment: 'positive' },
+
+            { type: 'user', text: 'Noveno, Barrio Colombia, jornada mañana para mi hija Juliana' },
+
+            { type: 'bot', agent: 'Juli 🤖', text: 'Perfecto, déjame verificar disponibilidad para Noveno en Barrio Colombia mañana... 🔍' },
+            { type: 'thought', emoji: '😮', text: '¡Verifica ANTES de pedirme 20 datos!', sentiment: 'positive' },
+
+            { type: 'bot', agent: 'Juli 🤖', text: 'Camila, Barrio Colombia mañana está completo para Noveno. Pero tengo buenas opciones para Juliana:\n\n✅ Barrio Colombia TARDE → 3 cupos\n✅ Sede Poblado → A 12 min, mañana disponible\n\n¿Te cuento sobre alguna?' },
+            { type: 'thought', emoji: '😃', text: '¡Tiene alternativas! No me dejó en el limbo', sentiment: 'positive' },
+
+            { type: 'user', text: 'Cuéntame de Poblado' },
+
+            { type: 'bot', agent: 'Juli 🤖', text: 'Poblado tiene la misma metodología y profes certificados que Barrio Colombia.\n\nPlus: tiene más área verde y huerto donde los estudiantes aprenden cultivando 🌱\n\n¿Te gustaría agendar una inmersión gratuita para que Juliana viva un día en Cosmo?' },
+            { type: 'thought', emoji: '🥰', text: 'Me vende con cariño, no con formularios', sentiment: 'positive' },
+
+            { type: 'user', text: 'Sí, me interesa' },
+
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Genial! Soy Leti, te ayudo con el agendamiento 📅\n\nPara Noveno en Poblado tengo:\n• Martes 3 dic - 8:00am\n• Jueves 5 dic - 8:00am\n\n¿Cuál le funciona mejor a Juliana?' },
+            { type: 'thought', emoji: '😊', text: 'Fluido, pasó a otro agente pero natural', sentiment: 'positive' },
+
             { type: 'user', text: 'El jueves' },
-            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Perfecto! Agendado para el Jueves 5 de diciembre a las 8am en Sede Poblado. ✅\n\nTe envío los detalles a tu correo y te escribo el día anterior con tips para que sea un día increíble. 😊' },
-            { type: 'result', status: 'won', text: '✅ LEAD CONVERTIDO → Inmersión agendada' }
+
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Perfecto! Para confirmar la inmersión de Juliana solo necesito:\n• Tu nombre completo\n• Correo electrónico\n\nAsí te envío la confirmación 📧' },
+            { type: 'thought', emoji: '😌', text: 'AHORA sí tiene sentido dar mis datos', sentiment: 'positive' },
+
+            { type: 'user', text: 'Camila Uribe, camila@email.com' },
+
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Listo Camila! ✅\n\nAgendé la inmersión de Juliana para:\n📅 Jueves 5 de diciembre, 8:00am\n📍 Sede Poblado\n\nTe envié la confirmación al correo. El día anterior te escribo con tips para que Juliana llegue preparada 😊' },
+            { type: 'thought', emoji: '🎉', text: '¡2 minutos y TODO resuelto!', sentiment: 'positive' },
         ];
 
         // Chat simulation logic
         function createMessage(msg) {
-            const div = document.createElement('div');
+            const wrapper = document.createElement('div');
+            wrapper.className = 'message-wrapper';
 
-            if (msg.type === 'result') {
-                div.className = `result-badge ${msg.status}`;
-                div.textContent = msg.text;
-                return div;
+            if (msg.type === 'thought') {
+                const thought = document.createElement('div');
+                const sentimentClass = msg.sentiment === 'positive' ? 'positive' :
+                                      msg.sentiment === 'negative' ? 'negative' : '';
+                thought.className = `thought-bubble ${sentimentClass}`;
+                thought.innerHTML = `${msg.emoji} "${msg.text}"`;
+                wrapper.appendChild(thought);
+                return wrapper;
             }
 
+            const div = document.createElement('div');
             div.className = `message ${msg.type}`;
             if (msg.agentClass) div.classList.add(msg.agentClass);
 
@@ -763,7 +1062,8 @@
             content += `<div class="message-time">${new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}</div>`;
 
             div.innerHTML = content;
-            return div;
+            wrapper.appendChild(div);
+            return wrapper;
         }
 
         function createTypingIndicator() {
@@ -773,17 +1073,17 @@
             return div;
         }
 
-        async function playConversation(chatArea, conversation, playBtn) {
+        async function playConversation(chatArea, conversation, playBtn, metricsId) {
             playBtn.disabled = true;
             chatArea.innerHTML = '';
+            document.getElementById(metricsId).classList.remove('visible');
 
             for (const msg of conversation) {
                 if (msg.type === 'bot') {
-                    // Show typing indicator
                     const typing = createTypingIndicator();
                     chatArea.appendChild(typing);
                     chatArea.scrollTop = chatArea.scrollHeight;
-                    await new Promise(r => setTimeout(r, 1200));
+                    await new Promise(r => setTimeout(r, 800));
                     typing.remove();
                 }
 
@@ -791,16 +1091,26 @@
                 chatArea.appendChild(messageEl);
                 chatArea.scrollTop = chatArea.scrollHeight;
 
-                // Delay between messages
-                const delay = msg.type === 'result' ? 500 : (msg.type === 'user' ? 800 : 1500);
+                // Shorter delays for faster demo
+                let delay;
+                if (msg.type === 'thought') {
+                    delay = 600;
+                } else if (msg.type === 'user') {
+                    delay = 400;
+                } else {
+                    delay = 700;
+                }
                 await new Promise(r => setTimeout(r, delay));
             }
 
+            // Show metrics card
+            document.getElementById(metricsId).classList.add('visible');
             playBtn.disabled = false;
         }
 
-        function resetChat(chatArea) {
+        function resetChat(chatArea, metricsId) {
             chatArea.innerHTML = '';
+            document.getElementById(metricsId).classList.remove('visible');
         }
 
         // Event listeners
@@ -808,24 +1118,26 @@
             playConversation(
                 document.getElementById('chat-before'),
                 conversationBefore,
-                this
+                this,
+                'metrics-before'
             );
         });
 
         document.getElementById('reset-before').addEventListener('click', function() {
-            resetChat(document.getElementById('chat-before'));
+            resetChat(document.getElementById('chat-before'), 'metrics-before');
         });
 
         document.getElementById('play-after').addEventListener('click', function() {
             playConversation(
                 document.getElementById('chat-after'),
                 conversationAfter,
-                this
+                this,
+                'metrics-after'
             );
         });
 
         document.getElementById('reset-after').addEventListener('click', function() {
-            resetChat(document.getElementById('chat-after'));
+            resetChat(document.getElementById('chat-after'), 'metrics-after');
         });
     </script>
 </body>
