@@ -43,6 +43,68 @@
             color: var(--cosmo-blue);
         }
 
+        /* Top Header with Logos */
+        .top-header {
+            background: var(--bg-white);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .top-header-logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .top-header-title {
+            text-align: center;
+        }
+
+        .top-header-title h1 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--cosmo-blue);
+            margin-bottom: 0.2rem;
+        }
+
+        .top-header-title span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .top-header-brand a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .top-header-brand a:hover {
+            color: var(--cosmo-pink);
+        }
+
+        .top-header-brand span {
+            font-weight: 600;
+            color: var(--cosmo-blue);
+        }
+
+        @media (max-width: 700px) {
+            .top-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .top-header-title h1 {
+                font-size: 1rem;
+            }
+        }
+
         /* Header Stats Bar */
         .stats-bar {
             background: var(--cosmo-blue);
@@ -1091,6 +1153,22 @@
     </style>
 </head>
 <body>
+    <!-- Top Header with Logos -->
+    <header class="top-header">
+        <div class="top-header-logo">
+            <img src="https://images.ctfassets.net/orp4t2combw2/4abb3HTxr5BmjRmV75zexS/b944c02c446a56b764ffb75caab22e90/Cosmo-Fondo-Transparente.png" alt="Cosmo Schools">
+        </div>
+        <div class="top-header-title">
+            <h1>Propuesta de Agentes IA para Admisiones</h1>
+            <span>Demo Interactivo · Noviembre 2025</span>
+        </div>
+        <div class="top-header-brand">
+            <a href="https://www.loopera.co/" target="_blank" rel="noopener">
+                by <span>Loopera</span>
+            </a>
+        </div>
+    </header>
+
     <!-- Stats Bar -->
     <div class="stats-bar">
         <div class="stat-item">
