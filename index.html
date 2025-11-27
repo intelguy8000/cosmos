@@ -724,6 +724,169 @@
             animation: fadeInArea 1s ease-out 1s forwards;
         }
 
+        /* Multi-Agent Comparison Section */
+        .multiagent-section {
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .multiagent-section .multiagent-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .multiagent-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .multiagent-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--cosmo-blue);
+        }
+
+        .multiagent-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .multiagent-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .multiagent-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .multiagent-card.traditional {
+            border: 2px solid #e5e7eb;
+        }
+
+        .multiagent-card.modern {
+            border: 2px solid var(--success-green);
+        }
+
+        .multiagent-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .multiagent-card.traditional .multiagent-card-title {
+            color: var(--text-muted);
+        }
+
+        .multiagent-card.modern .multiagent-card-title {
+            color: var(--success-green);
+        }
+
+        /* Diagram Styles */
+        .diagram-container {
+            background: var(--bg-cream);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            min-height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .diagram-svg {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+        .diagram-box {
+            fill: white;
+            stroke: #d1d5db;
+            stroke-width: 2;
+            rx: 8;
+        }
+
+        .diagram-box.highlight {
+            stroke: var(--cosmo-pink);
+            stroke-width: 2;
+        }
+
+        .diagram-box.agent {
+            fill: #f0fdf4;
+            stroke: var(--success-green);
+        }
+
+        .diagram-box.orchestrator {
+            fill: var(--cosmo-pink-light);
+            stroke: var(--cosmo-pink);
+        }
+
+        .diagram-box.guardrail {
+            fill: #fef3c7;
+            stroke: #f59e0b;
+        }
+
+        .diagram-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            fill: var(--text-dark);
+            text-anchor: middle;
+        }
+
+        .diagram-text.small {
+            font-size: 9px;
+            fill: var(--text-muted);
+        }
+
+        .diagram-arrow {
+            stroke: #9ca3af;
+            stroke-width: 2;
+            fill: none;
+            marker-end: url(#arrowhead);
+        }
+
+        .diagram-arrow.highlight {
+            stroke: var(--cosmo-pink);
+        }
+
+        /* Bullet List Styles */
+        .multiagent-bullets {
+            list-style: none;
+        }
+
+        .multiagent-bullets li {
+            padding: 0.5rem 0;
+            padding-left: 1.8rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .multiagent-bullets li::before {
+            position: absolute;
+            left: 0;
+            font-size: 0.8rem;
+        }
+
+        .multiagent-card.traditional .multiagent-bullets li::before {
+            content: '●';
+            color: var(--error-red);
+        }
+
+        .multiagent-card.modern .multiagent-bullets li::before {
+            content: '✅';
+        }
+
         /* Stages Section */
         .stages-section {
             padding: 4rem 2rem;
@@ -1401,6 +1564,141 @@
                 </div>
             </div>
         </div>
+        </div>
+    </section>
+
+    <!-- Multi-Agent Comparison Section -->
+    <section class="multiagent-section">
+        <div class="multiagent-inner">
+            <div class="multiagent-header">
+                <h2>🤖 Principio de Diseño: Multi-Agente Especializado</h2>
+            </div>
+
+            <div class="multiagent-grid">
+                <!-- Traditional Bot Card -->
+                <div class="multiagent-card traditional">
+                    <div class="multiagent-card-title">
+                        ❌ Bot Tradicional
+                    </div>
+
+                    <div class="diagram-container">
+                        <svg class="diagram-svg" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#9ca3af"/>
+                                </marker>
+                            </defs>
+
+                            <!-- Top: Single Bot -->
+                            <rect class="diagram-box" x="110" y="10" width="100" height="40" rx="8"/>
+                            <text class="diagram-text" x="160" y="35">Bot Único</text>
+
+                            <!-- Arrow down -->
+                            <line class="diagram-arrow" x1="160" y1="50" x2="160" y2="70"/>
+
+                            <!-- Decision tree -->
+                            <rect class="diagram-box" x="60" y="75" width="80" height="35" rx="6"/>
+                            <text class="diagram-text small" x="100" y="97">¿Opción 1?</text>
+
+                            <rect class="diagram-box" x="180" y="75" width="80" height="35" rx="6"/>
+                            <text class="diagram-text small" x="220" y="97">¿Opción 2?</text>
+
+                            <!-- Arrows to decision -->
+                            <line class="diagram-arrow" x1="135" y1="70" x2="100" y2="75"/>
+                            <line class="diagram-arrow" x1="185" y1="70" x2="220" y2="75"/>
+
+                            <!-- More branches -->
+                            <rect class="diagram-box" x="20" y="130" width="60" height="30" rx="5"/>
+                            <text class="diagram-text small" x="50" y="149">Sí/No</text>
+
+                            <rect class="diagram-box" x="90" y="130" width="60" height="30" rx="5"/>
+                            <text class="diagram-text small" x="120" y="149">Sí/No</text>
+
+                            <rect class="diagram-box" x="170" y="130" width="60" height="30" rx="5"/>
+                            <text class="diagram-text small" x="200" y="149">Sí/No</text>
+
+                            <rect class="diagram-box" x="240" y="130" width="60" height="30" rx="5"/>
+                            <text class="diagram-text small" x="270" y="149">Sí/No</text>
+
+                            <!-- Arrows to branches -->
+                            <line class="diagram-arrow" x1="80" y1="110" x2="50" y2="130"/>
+                            <line class="diagram-arrow" x1="120" y1="110" x2="120" y2="130"/>
+                            <line class="diagram-arrow" x1="200" y1="110" x2="200" y2="130"/>
+                            <line class="diagram-arrow" x1="240" y1="110" x2="270" y2="130"/>
+
+                            <!-- End node -->
+                            <rect class="diagram-box" x="120" y="170" width="80" height="25" rx="5" style="fill: #fee2e2; stroke: #ef4444;"/>
+                            <text class="diagram-text small" x="160" y="186" style="fill: #991b1b;">Fin rígido</text>
+
+                            <line class="diagram-arrow" x1="50" y1="160" x2="130" y2="172"/>
+                            <line class="diagram-arrow" x1="120" y1="160" x2="140" y2="170"/>
+                            <line class="diagram-arrow" x1="200" y1="160" x2="180" y2="170"/>
+                            <line class="diagram-arrow" x1="270" y1="160" x2="190" y2="172"/>
+                        </svg>
+                    </div>
+
+                    <ul class="multiagent-bullets">
+                        <li>Un solo flujo lineal de preguntas</li>
+                        <li>No puede adaptarse a contexto</li>
+                        <li>Mismas 24 preguntas siempre</li>
+                        <li>Sin memoria entre conversaciones</li>
+                        <li>Termina en "espere días"</li>
+                    </ul>
+                </div>
+
+                <!-- Modern Multi-Agent Card -->
+                <div class="multiagent-card modern">
+                    <div class="multiagent-card-title">
+                        ✅ Sistema Multi-Agente
+                    </div>
+
+                    <div class="diagram-container">
+                        <svg class="diagram-svg" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet">
+                            <!-- Orchestrator (center top) -->
+                            <rect class="diagram-box orchestrator" x="100" y="10" width="120" height="45" rx="10"/>
+                            <text class="diagram-text" x="160" y="30" style="fill: var(--cosmo-pink); font-weight: 600;">Orquestador</text>
+                            <text class="diagram-text small" x="160" y="45">Cerebro IA</text>
+
+                            <!-- Connection lines from orchestrator -->
+                            <line class="diagram-arrow highlight" x1="120" y1="55" x2="60" y2="85"/>
+                            <line class="diagram-arrow highlight" x1="160" y1="55" x2="160" y2="85"/>
+                            <line class="diagram-arrow highlight" x1="200" y1="55" x2="260" y2="85"/>
+
+                            <!-- Agent 1: Juli -->
+                            <rect class="diagram-box agent" x="15" y="85" width="90" height="50" rx="8"/>
+                            <text class="diagram-text" x="60" y="105" style="fill: #166534; font-weight: 600;">Juli 🤖</text>
+                            <text class="diagram-text small" x="60" y="122">Asesora</text>
+
+                            <!-- Agent 2: Leti -->
+                            <rect class="diagram-box agent" x="115" y="85" width="90" height="50" rx="8"/>
+                            <text class="diagram-text" x="160" y="105" style="fill: #166534; font-weight: 600;">Leti 📅</text>
+                            <text class="diagram-text small" x="160" y="122">Agenda</text>
+
+                            <!-- Agent 3: Jarvis -->
+                            <rect class="diagram-box agent" x="215" y="85" width="90" height="50" rx="8"/>
+                            <text class="diagram-text" x="260" y="105" style="fill: #166534; font-weight: 600;">Jarvis 🔍</text>
+                            <text class="diagram-text small" x="260" y="122">Cupos</text>
+
+                            <!-- Guardrails -->
+                            <rect class="diagram-box guardrail" x="70" y="155" width="180" height="35" rx="8"/>
+                            <text class="diagram-text" x="160" y="175" style="fill: #92400e; font-weight: 500;">🛡️ Guardrails: Seguridad + Datos</text>
+
+                            <!-- Connections to guardrails -->
+                            <line class="diagram-arrow" x1="60" y1="135" x2="100" y2="155" style="stroke: #f59e0b;"/>
+                            <line class="diagram-arrow" x1="160" y1="135" x2="160" y2="155" style="stroke: #f59e0b;"/>
+                            <line class="diagram-arrow" x1="260" y1="135" x2="220" y2="155" style="stroke: #f59e0b;"/>
+                        </svg>
+                    </div>
+
+                    <ul class="multiagent-bullets">
+                        <li>Agentes especializados por tarea</li>
+                        <li>Se adapta al contexto en tiempo real</li>
+                        <li>Solo pregunta lo necesario</li>
+                        <li>Memoria persistente del lead</li>
+                        <li>Ofrece alternativas y agenda</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
