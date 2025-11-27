@@ -1037,6 +1037,23 @@
             box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
         }
 
+        .cta-credit {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .cta-credit a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .cta-credit a:hover {
+            color: var(--cosmo-pink-light);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -1045,6 +1062,17 @@
             font-size: 0.85rem;
             border-top: 1px solid #e5e7eb;
             background: var(--bg-white);
+        }
+
+        footer a {
+            color: var(--cosmo-pink);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--cosmo-blue);
         }
 
         /* Scrollbar */
@@ -1434,12 +1462,13 @@
     <section class="cta-section">
         <h2>¿Listos para aumentar sus matrículas?</h2>
         <p>Implementación en 4 semanas. Resultados medibles desde el primer mes.</p>
-        <button class="cta-button">Agendar reunión →</button>
+        <a href="https://www.loopera.co/" target="_blank" rel="noopener" class="cta-button">Agendar reunión →</a>
+        <p class="cta-credit">Desarrollado por <a href="https://www.loopera.co/" target="_blank" rel="noopener">Loopera</a></p>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>Demo creado para Cosmo Schools · 11 sedes en Medellín</p>
+        <p>Demo desarrollado por <a href="https://www.loopera.co/" target="_blank" rel="noopener">Loopera</a> · <a href="https://www.loopera.co/" target="_blank" rel="noopener">loopera.co</a></p>
     </footer>
 
     <script>
