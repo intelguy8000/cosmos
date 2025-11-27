@@ -533,6 +533,135 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Emotion Journey Chart */
+        .journey-chart {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+        }
+
+        .journey-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .metrics-card.negative .journey-title {
+            color: #991b1b;
+        }
+
+        .metrics-card.positive .journey-title {
+            color: #166534;
+        }
+
+        .journey-svg {
+            width: 100%;
+            height: 150px;
+            overflow: visible;
+        }
+
+        .journey-line {
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .journey-line.negative {
+            stroke: url(#gradientNegative);
+        }
+
+        .journey-line.positive {
+            stroke: #22c55e;
+        }
+
+        .journey-area {
+            opacity: 0.2;
+        }
+
+        .journey-area.negative {
+            fill: url(#areaGradientNegative);
+        }
+
+        .journey-area.positive {
+            fill: #22c55e;
+        }
+
+        .journey-point {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .journey-point:hover {
+            transform: scale(1.3);
+        }
+
+        .journey-point circle {
+            stroke-width: 2;
+            stroke: white;
+        }
+
+        .journey-label {
+            font-size: 0.6rem;
+            fill: var(--text-muted);
+            text-anchor: middle;
+        }
+
+        .journey-emoji {
+            font-size: 0.9rem;
+            text-anchor: middle;
+        }
+
+        .journey-tooltip {
+            position: absolute;
+            background: var(--cosmo-blue);
+            color: white;
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+            z-index: 100;
+        }
+
+        .journey-tooltip.visible {
+            opacity: 1;
+        }
+
+        /* Animation for drawing the line */
+        @keyframes drawLine {
+            from {
+                stroke-dashoffset: 1000;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .journey-line.animate {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawLine 2s ease-out forwards;
+        }
+
+        @keyframes fadeInArea {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 0.2;
+            }
+        }
+
+        .journey-area.animate {
+            opacity: 0;
+            animation: fadeInArea 1s ease-out 1s forwards;
+        }
+
         /* Stages Section */
         .stages-section {
             padding: 4rem 2rem;
@@ -1016,6 +1145,56 @@
                             <div class="metric-label">Conversión</div>
                         </div>
                     </div>
+
+                    <!-- Journey Emocional Chart -->
+                    <div class="journey-chart">
+                        <div class="journey-title">📉 Journey emocional</div>
+                        <svg class="journey-svg" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid meet" id="chart-before">
+                            <defs>
+                                <linearGradient id="gradientNegative" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#22c55e"/>
+                                    <stop offset="30%" style="stop-color:#eab308"/>
+                                    <stop offset="70%" style="stop-color:#f97316"/>
+                                    <stop offset="100%" style="stop-color:#ef4444"/>
+                                </linearGradient>
+                                <linearGradient id="areaGradientNegative" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#22c55e"/>
+                                    <stop offset="50%" style="stop-color:#eab308"/>
+                                    <stop offset="100%" style="stop-color:#ef4444"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Y axis emojis -->
+                            <text x="12" y="25" class="journey-emoji">😊</text>
+                            <text x="12" y="75" class="journey-emoji">😐</text>
+                            <text x="12" y="125" class="journey-emoji">😡</text>
+                            <!-- Area under curve -->
+                            <path class="journey-area negative" d="M 40,20 Q 80,25 120,50 T 200,70 T 280,100 T 360,130 L 360,140 L 40,140 Z"/>
+                            <!-- Main line -->
+                            <path class="journey-line negative" d="M 40,20 Q 80,25 120,50 T 200,70 T 280,100 T 360,130"/>
+                            <!-- Data points with labels -->
+                            <g class="journey-point" data-tooltip="Inicio optimista">
+                                <circle cx="40" cy="20" r="6" fill="#22c55e"/>
+                                <text x="40" y="8" class="journey-label">1</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="10 opciones confusas">
+                                <circle cx="120" cy="50" r="6" fill="#eab308"/>
+                                <text x="120" y="38" class="journey-label">6</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="Aún sin saber si hay cupo">
+                                <circle cx="200" cy="70" r="6" fill="#f97316"/>
+                                <text x="200" y="58" class="journey-label">11</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="Preguntan ingresos">
+                                <circle cx="280" cy="100" r="6" fill="#f97316"/>
+                                <text x="280" y="88" class="journey-label">16</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="No hay cupo, espere días">
+                                <circle cx="360" cy="130" r="6" fill="#ef4444"/>
+                                <text x="360" y="118" class="journey-label">24</text>
+                            </g>
+                        </svg>
+                    </div>
+
                     <div class="metrics-result">❌ "Espere varios días" - LEAD PERDIDO</div>
                 </div>
             </div>
@@ -1065,6 +1244,53 @@
                             <div class="metric-label">Conversión</div>
                         </div>
                     </div>
+
+                    <!-- Journey Emocional Chart -->
+                    <div class="journey-chart">
+                        <div class="journey-title">📈 Journey emocional</div>
+                        <svg class="journey-svg" viewBox="0 0 400 150" preserveAspectRatio="xMidYMid meet" id="chart-after">
+                            <defs>
+                                <linearGradient id="gradientPositive" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#22c55e"/>
+                                    <stop offset="100%" style="stop-color:#16a34a"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- Y axis emojis -->
+                            <text x="12" y="25" class="journey-emoji">🎉</text>
+                            <text x="12" y="75" class="journey-emoji">😊</text>
+                            <text x="12" y="125" class="journey-emoji">😐</text>
+                            <!-- Area under curve -->
+                            <path class="journey-area positive" d="M 40,45 Q 80,40 120,35 T 200,30 T 280,25 T 360,15 L 360,140 L 40,140 Z"/>
+                            <!-- Main line (stays high, rises at end) -->
+                            <path class="journey-line positive" d="M 40,45 Q 80,40 120,35 T 200,30 T 280,25 T 360,15"/>
+                            <!-- Data points with labels -->
+                            <g class="journey-point" data-tooltip="Saludo cálido">
+                                <circle cx="40" cy="45" r="6" fill="#22c55e"/>
+                                <text x="40" y="33" class="journey-label">1</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="Deduce grado por edad">
+                                <circle cx="95" cy="38" r="6" fill="#22c55e"/>
+                                <text x="95" y="26" class="journey-label">3</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="Recomienda sede cercana">
+                                <circle cx="150" cy="33" r="6" fill="#22c55e"/>
+                                <text x="150" y="21" class="journey-label">5</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="Verifica cupo ANTES">
+                                <circle cx="205" cy="30" r="6" fill="#22c55e"/>
+                                <text x="205" y="18" class="journey-label">7</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="Pregunta necesidades con propósito">
+                                <circle cx="280" cy="25" r="6" fill="#22c55e"/>
+                                <text x="280" y="13" class="journey-label">13</text>
+                            </g>
+                            <g class="journey-point" data-tooltip="¡Inmersión agendada!">
+                                <circle cx="360" cy="15" r="6" fill="#16a34a"/>
+                                <text x="360" y="3" class="journey-label">17</text>
+                            </g>
+                        </svg>
+                    </div>
+
                     <div class="metrics-result">✅ INMERSIÓN AGENDADA - LEAD CONVERTIDO</div>
                 </div>
             </div>
@@ -1448,6 +1674,68 @@
 
         document.getElementById('reset-after').addEventListener('click', function() {
             resetChat(document.getElementById('chat-after'), 'metrics-after');
+        });
+
+        // Journey Chart Tooltips
+        function initJourneyTooltips() {
+            const tooltip = document.createElement('div');
+            tooltip.className = 'journey-tooltip';
+            document.body.appendChild(tooltip);
+
+            document.querySelectorAll('.journey-point').forEach(point => {
+                point.addEventListener('mouseenter', (e) => {
+                    const text = point.getAttribute('data-tooltip');
+                    if (text) {
+                        tooltip.textContent = text;
+                        tooltip.classList.add('visible');
+                    }
+                });
+
+                point.addEventListener('mousemove', (e) => {
+                    tooltip.style.left = (e.pageX + 10) + 'px';
+                    tooltip.style.top = (e.pageY - 30) + 'px';
+                });
+
+                point.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('visible');
+                });
+            });
+        }
+
+        // Animate charts when they become visible
+        function initChartAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const chart = entry.target;
+                        const line = chart.querySelector('.journey-line');
+                        const area = chart.querySelector('.journey-area');
+
+                        if (line && !line.classList.contains('animated')) {
+                            line.classList.add('animate', 'animated');
+                        }
+                        if (area && !area.classList.contains('animated')) {
+                            area.classList.add('animate', 'animated');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.journey-svg').forEach(svg => {
+                observer.observe(svg);
+            });
+        }
+
+        // Initialize tooltips and animations when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            initJourneyTooltips();
+            initChartAnimations();
         });
     </script>
 </body>
