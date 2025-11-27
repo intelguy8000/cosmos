@@ -1515,20 +1515,20 @@
             color: var(--cosmo-pink);
         }
 
-        /* Scope Section */
+        /* Scope Section - Vertical Timeline */
         .scope-section {
             padding: 4rem 2rem;
             background: var(--bg-cream);
         }
 
         .scope-section .scope-inner {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .scope-header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .scope-header h2 {
@@ -1536,103 +1536,152 @@
             color: var(--cosmo-blue);
         }
 
-        .scope-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+        .scope-timeline {
+            position: relative;
+            padding-left: 3rem;
         }
 
-        @media (max-width: 900px) {
-            .scope-grid {
-                grid-template-columns: 1fr;
-            }
+        /* Vertical line */
+        .scope-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--cosmo-pink) 0%, var(--cosmo-pink) 50%, #22c55e 50%, #22c55e 100%);
+            border-radius: 3px;
+        }
+
+        .scope-phase {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .scope-phase:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Timeline dot */
+        .scope-phase::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 1.5rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            border: 4px solid var(--cosmo-pink);
+            z-index: 2;
+            margin-left: 6px;
+        }
+
+        .scope-phase.phase-b::before {
+            border-color: #22c55e;
+        }
+
+        /* Phase number */
+        .scope-phase-number {
+            position: absolute;
+            left: -4.5rem;
+            top: 1.2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--cosmo-pink);
+        }
+
+        .scope-phase.phase-b .scope-phase-number {
+            color: #22c55e;
         }
 
         .scope-card {
+            background: var(--bg-white);
             border-radius: 16px;
-            padding: 2rem;
-            position: relative;
+            padding: 1.5rem 2rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--cosmo-pink);
         }
 
-        .scope-card.phase-a {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border: 2px solid #3b82f6;
+        .scope-phase.phase-b .scope-card {
+            border-left-color: #22c55e;
         }
 
-        .scope-card.phase-b {
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-            border: 2px solid #22c55e;
+        .scope-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .scope-card-icon {
+            font-size: 1.5rem;
         }
 
         .scope-card-title {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .scope-card.phase-a .scope-card-title {
-            color: #1e40af;
-        }
-
-        .scope-card.phase-b .scope-card-title {
-            color: #166534;
+            color: var(--cosmo-blue);
+            margin: 0;
         }
 
         .scope-card-subtitle {
             font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 1.2rem;
-            line-height: 1.5;
+            margin-bottom: 1rem;
         }
 
-        .scope-list {
-            list-style: none;
-            margin: 0 0 1.5rem 0;
+        .scope-checklist {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 0;
             padding: 0;
+            list-style: none;
         }
 
-        .scope-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            font-size: 0.9rem;
+        .scope-checklist li {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--bg-cream);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             color: var(--text-dark);
         }
 
-        .scope-list li::before {
+        .scope-checklist li::before {
             content: '✓';
-            position: absolute;
-            left: 0;
+            color: var(--cosmo-pink);
             font-weight: bold;
         }
 
-        .scope-card.phase-a .scope-list li::before {
-            color: #3b82f6;
-        }
-
-        .scope-card.phase-b .scope-list li::before {
+        .scope-phase.phase-b .scope-checklist li::before {
             color: #22c55e;
         }
 
-        .scope-badge {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
+        @media (max-width: 600px) {
+            .scope-timeline {
+                padding-left: 2rem;
+            }
 
-        .scope-card.phase-a .scope-badge {
-            background: #3b82f6;
-            color: white;
-        }
+            .scope-phase::before {
+                left: -2rem;
+                width: 16px;
+                height: 16px;
+                margin-left: 4px;
+            }
 
-        .scope-card.phase-b .scope-badge {
-            background: #22c55e;
-            color: white;
+            .scope-phase-number {
+                display: none;
+            }
+
+            .scope-card {
+                padding: 1.2rem;
+            }
         }
 
         /* Timeline Section */
@@ -2611,33 +2660,42 @@
                 <h2>🎯 Alcance: Enfoque de Implementación</h2>
             </div>
 
-            <div class="scope-grid">
-                <!-- Phase A Card -->
-                <div class="scope-card phase-a">
-                    <div class="scope-card-title">(A) Reemplazar el flujo actual a un flujo conversacional atendido por agentes</div>
-                    <p class="scope-card-subtitle">Asegurando que cumplimos las mismas funciones actuales (Registro, FAQ, Inscripción) pero Mejorado:</p>
-                    <ul class="scope-list">
-                        <li>Conversacional y humano</li>
-                        <li>Inteligente → optimizado para convertir</li>
-                        <li>Mejor experiencia de usuario (sin preguntas innecesarias)</li>
-                        <li>Más preciso en intervención humana</li>
-                        <li>Routing inteligente para asignación a humanos</li>
-                    </ul>
-                    <span class="scope-badge">Fase A: Foundation</span>
+            <div class="scope-timeline">
+                <!-- Phase 1: Foundation -->
+                <div class="scope-phase">
+                    <span class="scope-phase-number">1</span>
+                    <div class="scope-card">
+                        <div class="scope-card-header">
+                            <span class="scope-card-icon">🏗️</span>
+                            <h3 class="scope-card-title">FOUNDATION</h3>
+                        </div>
+                        <p class="scope-card-subtitle">Reemplazar el flujo actual con agentes conversacionales inteligentes</p>
+                        <ul class="scope-checklist">
+                            <li>Conversacional y humano</li>
+                            <li>Optimizado para convertir</li>
+                            <li>Mejor experiencia de usuario</li>
+                            <li>Routing inteligente a humanos</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Phase B Card -->
-                <div class="scope-card phase-b">
-                    <div class="scope-card-title">(B) Nuevas capacidades y funciones, exploración de use-cases para conversión</div>
-                    <p class="scope-card-subtitle">Desarrollo e incorporación de nuevas capacidades y funciones que hoy no se tiene en el flujo:</p>
-                    <ul class="scope-list">
-                        <li>Recuperación "Inconcluso Inscripción"</li>
-                        <li>Recuperación Activa "Lista de Espera"</li>
-                        <li>Cierre de Matrícula Post-Admisión</li>
-                        <li>Predicción y Prevención de No-Show Inmersiones</li>
-                        <li>Calificación Inteligente de Leads (Avanzada)</li>
-                    </ul>
-                    <span class="scope-badge">Fase B: Nuevas capacidades (Iterativo)</span>
+                <!-- Phase 2: Expansión -->
+                <div class="scope-phase phase-b">
+                    <span class="scope-phase-number">2</span>
+                    <div class="scope-card">
+                        <div class="scope-card-header">
+                            <span class="scope-card-icon">🚀</span>
+                            <h3 class="scope-card-title">EXPANSIÓN</h3>
+                        </div>
+                        <p class="scope-card-subtitle">Nuevas capacidades y funciones para maximizar conversión</p>
+                        <ul class="scope-checklist">
+                            <li>Recuperación de leads</li>
+                            <li>Gestión lista de espera</li>
+                            <li>Cierre post-admisión</li>
+                            <li>Predicción no-shows</li>
+                            <li>Lead scoring avanzado</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
