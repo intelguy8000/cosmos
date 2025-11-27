@@ -107,13 +107,12 @@
 
         /* Header Stats Bar */
         .stats-bar {
-            background: var(--bg-cream);
+            background: linear-gradient(135deg, var(--cosmo-pink) 0%, #C2185B 100%);
             padding: 1rem 2rem;
             display: flex;
             justify-content: center;
             gap: 3rem;
             flex-wrap: wrap;
-            border-bottom: 3px solid var(--cosmo-pink);
         }
 
         .stat-item {
@@ -124,17 +123,22 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--cosmo-blue);
+            color: #FFFFFF;
+        }
+
+        .stat-number.highlight {
+            color: #a7f3d0;
+            text-shadow: 0 0 10px rgba(167, 243, 208, 0.5);
         }
 
         .stat-label {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .stat-arrow {
             font-size: 2rem;
-            color: var(--cosmo-pink);
+            color: #FFFFFF;
             display: flex;
             align-items: center;
         }
@@ -1964,7 +1968,7 @@
         </div>
         <div class="stat-arrow">→</div>
         <div class="stat-item">
-            <div class="stat-number" style="color: var(--cosmo-pink);">+25%</div>
+            <div class="stat-number highlight">+25%</div>
             <div class="stat-label">Meta con IA</div>
         </div>
     </div>
