@@ -1196,13 +1196,16 @@
         .quickwin-comparison {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 2.5rem;
             margin-bottom: 2rem;
         }
 
-        @media (max-width: 1000px) {
+        @media (max-width: 1100px) {
             .quickwin-comparison {
                 grid-template-columns: 1fr;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
 
@@ -1212,11 +1215,11 @@
 
         .quickwin-card-label {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            padding: 0.4rem 1.2rem;
-            border-radius: 20px;
+            margin-bottom: 1.2rem;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
             display: inline-block;
         }
 
@@ -1233,29 +1236,29 @@
         /* Browser Mockup */
         .browser-mockup {
             background: #fff;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
             border: 1px solid #e5e7eb;
         }
 
         .browser-bar {
             background: #f1f3f4;
-            padding: 0.6rem 1rem;
+            padding: 0.8rem 1.2rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
             border-bottom: 1px solid #e5e7eb;
         }
 
         .browser-dots {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
 
         .browser-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
         }
 
@@ -1266,9 +1269,9 @@
         .browser-url {
             flex: 1;
             background: white;
-            border-radius: 6px;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.75rem;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             display: flex;
             align-items: center;
@@ -1282,174 +1285,131 @@
         /* Cosmo Page Replica */
         .cosmo-page {
             position: relative;
-            height: 280px;
+            height: 380px;
             overflow: hidden;
         }
 
         .cosmo-hero {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: #FFFFFF;
             height: 100%;
             position: relative;
-            padding: 0.8rem;
+            padding: 1.2rem;
         }
 
         .cosmo-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        .cosmo-logo {
-            height: 28px;
-            filter: brightness(0) invert(1);
+        .cosmo-logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--cosmo-pink);
+            letter-spacing: -0.5px;
         }
 
         .cosmo-nav {
             display: flex;
-            gap: 0.8rem;
+            gap: 1rem;
         }
 
         .cosmo-nav-item {
-            font-size: 0.55rem;
-            color: rgba(255,255,255,0.8);
+            font-size: 0.75rem;
+            color: var(--text-muted);
             text-decoration: none;
         }
 
         .cosmo-nav-item.highlight {
             background: var(--cosmo-pink);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
             color: white;
         }
 
         .cosmo-content {
             display: flex;
-            gap: 1rem;
-            height: calc(100% - 50px);
+            gap: 1.5rem;
+            height: calc(100% - 80px);
+            align-items: center;
         }
 
         .cosmo-main {
             flex: 1;
             display: flex;
             align-items: center;
-            position: relative;
+            justify-content: center;
         }
 
         .cosmo-card {
-            background: rgba(245, 245, 240, 0.95);
-            border-radius: 12px;
-            padding: 1rem;
-            max-width: 200px;
-            position: relative;
-            z-index: 2;
+            background: var(--bg-cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-width: 320px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
 
         .cosmo-card-title {
-            font-size: 0.65rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--cosmo-pink);
-            margin-bottom: 0.4rem;
-            line-height: 1.3;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
         }
 
         .cosmo-card-text {
-            font-size: 0.5rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 0.6rem;
-            line-height: 1.4;
+            margin-bottom: 1rem;
+            line-height: 1.5;
         }
 
         .cosmo-card-btn {
             background: var(--cosmo-pink);
             color: white;
-            font-size: 0.5rem;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
             border: none;
             font-weight: 600;
-        }
-
-        /* Decorative circles */
-        .cosmo-circles {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .cosmo-circle {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            opacity: 0.8;
-        }
-
-        .cosmo-circle.green { background: #22c55e; }
-        .cosmo-circle.yellow { background: #eab308; }
-        .cosmo-circle.blue { background: #3b82f6; }
-        .cosmo-circle.pink { background: var(--cosmo-pink); }
-
-        /* Social bar */
-        .cosmo-social {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            background: rgba(0,0,0,0.3);
-            padding: 4px;
-            border-radius: 6px;
-        }
-
-        .cosmo-social-icon {
-            width: 16px;
-            height: 16px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.5rem;
-            color: white;
+            cursor: pointer;
         }
 
         /* WhatsApp Button - Current (Cosmo style) */
         .wa-btn-current {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
+            bottom: 15px;
+            right: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 4px;
             z-index: 10;
         }
 
         .wa-btn-current-icon {
-            width: 36px;
-            height: 36px;
+            width: 50px;
+            height: 50px;
             background: var(--cosmo-pink);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
+            box-shadow: 0 3px 10px rgba(233, 30, 99, 0.3);
         }
 
         .wa-btn-current-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 28px;
+            height: 28px;
             fill: white;
         }
 
         .wa-btn-current-text {
-            font-size: 0.45rem;
+            font-size: 0.65rem;
             font-weight: 600;
             color: var(--cosmo-pink);
             text-transform: uppercase;
@@ -1458,53 +1418,53 @@
         /* WhatsApp Button - Proposed (Green animated) */
         .wa-btn-proposed {
             position: absolute;
-            bottom: 15px;
-            right: 15px;
+            bottom: 20px;
+            right: 20px;
             z-index: 10;
         }
 
         .wa-btn-proposed-main {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 10px;
             background: #25D366;
             color: white;
-            padding: 8px 14px;
-            border-radius: 25px;
-            font-size: 0.7rem;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 0.95rem;
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
             animation: waPulse 2s ease-in-out infinite;
             position: relative;
         }
 
         @keyframes waPulse {
             0%, 100% {
-                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
                 transform: scale(1);
             }
             50% {
-                box-shadow: 0 4px 25px rgba(37, 211, 102, 0.6), 0 0 35px rgba(37, 211, 102, 0.3);
+                box-shadow: 0 6px 35px rgba(37, 211, 102, 0.6), 0 0 50px rgba(37, 211, 102, 0.3);
                 transform: scale(1.05);
             }
         }
 
         .wa-btn-proposed-main svg {
-            width: 18px;
-            height: 18px;
+            width: 24px;
+            height: 24px;
             fill: white;
         }
 
         .wa-btn-badge {
             position: absolute;
-            top: -6px;
-            right: -6px;
+            top: -8px;
+            right: -8px;
             background: #ef4444;
             color: white;
-            width: 18px;
-            height: 18px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
-            font-size: 0.6rem;
+            font-size: 0.75rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -2874,7 +2834,7 @@
                         <div class="cosmo-page">
                             <div class="cosmo-hero">
                                 <div class="cosmo-header">
-                                    <img src="https://images.ctfassets.net/orp4t2combw2/4abb3HTxr5BmjRmV75zexS/b944c02c446a56b764ffb75caab22e90/Cosmo-Fondo-Transparente.png" alt="Cosmo" class="cosmo-logo">
+                                    <span class="cosmo-logo-text">COSMO Schools</span>
                                     <div class="cosmo-nav">
                                         <span class="cosmo-nav-item">¿Quiénes somos?</span>
                                         <span class="cosmo-nav-item highlight">Aplicar 2026</span>
@@ -2888,19 +2848,7 @@
                                             <p class="cosmo-card-text">Descubre las oportunidades que tenemos para ti y tu familia.</p>
                                             <button class="cosmo-card-btn">Quiero postularme</button>
                                         </div>
-                                        <div class="cosmo-circles">
-                                            <div class="cosmo-circle green"></div>
-                                            <div class="cosmo-circle yellow"></div>
-                                            <div class="cosmo-circle blue"></div>
-                                            <div class="cosmo-circle pink"></div>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="cosmo-social">
-                                    <div class="cosmo-social-icon">📷</div>
-                                    <div class="cosmo-social-icon">💼</div>
-                                    <div class="cosmo-social-icon">🎬</div>
-                                    <div class="cosmo-social-icon">🎵</div>
                                 </div>
                                 <!-- Current WhatsApp Button -->
                                 <div class="wa-btn-current">
@@ -2933,7 +2881,7 @@
                         <div class="cosmo-page">
                             <div class="cosmo-hero">
                                 <div class="cosmo-header">
-                                    <img src="https://images.ctfassets.net/orp4t2combw2/4abb3HTxr5BmjRmV75zexS/b944c02c446a56b764ffb75caab22e90/Cosmo-Fondo-Transparente.png" alt="Cosmo" class="cosmo-logo">
+                                    <span class="cosmo-logo-text">COSMO Schools</span>
                                     <div class="cosmo-nav">
                                         <span class="cosmo-nav-item">¿Quiénes somos?</span>
                                         <span class="cosmo-nav-item highlight">Aplicar 2026</span>
@@ -2947,19 +2895,7 @@
                                             <p class="cosmo-card-text">Descubre las oportunidades que tenemos para ti y tu familia.</p>
                                             <button class="cosmo-card-btn">Quiero postularme</button>
                                         </div>
-                                        <div class="cosmo-circles">
-                                            <div class="cosmo-circle green"></div>
-                                            <div class="cosmo-circle yellow"></div>
-                                            <div class="cosmo-circle blue"></div>
-                                            <div class="cosmo-circle pink"></div>
-                                        </div>
                                     </div>
-                                </div>
-                                <div class="cosmo-social">
-                                    <div class="cosmo-social-icon">📷</div>
-                                    <div class="cosmo-social-icon">💼</div>
-                                    <div class="cosmo-social-icon">🎬</div>
-                                    <div class="cosmo-social-icon">🎵</div>
                                 </div>
                                 <!-- Proposed WhatsApp Button -->
                                 <div class="wa-btn-proposed">
