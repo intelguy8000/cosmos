@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmo Schools - Demo Agentes IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-white: #FFFFFF;
+            --bg-cream: #F5F5F0;
+            --cosmo-blue: #1E3A5F;
+            --cosmo-pink: #E91E63;
+            --cosmo-pink-light: #FCE4EC;
+            --text-dark: #374151;
+            --text-muted: #6B7280;
+            --success-green: #22c55e;
+            --error-red: #ef4444;
+            --whatsapp-green: #075E54;
+            --whatsapp-light: #DCF8C6;
+            --whatsapp-bg: #ECE5DD;
+            --whatsapp-pattern: #d9d2c5;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--cosmo-blue);
+        }
+
+        /* Header Stats Bar */
+        .stats-bar {
+            background: var(--cosmo-blue);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            border-bottom: 3px solid var(--cosmo-pink);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #FFFFFF;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .stat-arrow {
+            font-size: 2rem;
+            color: var(--cosmo-pink);
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--cosmo-pink-light);
+            color: var(--cosmo-pink);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(233, 30, 99, 0.2);
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            color: var(--cosmo-blue);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Demo Section */
+        .demo-section {
+            padding: 3rem 2rem;
+            background: var(--bg-cream);
+        }
+
+        .demo-section .demo-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .demo-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--cosmo-blue);
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .demo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Phone Mockup */
+        .phone-mockup {
+            background: var(--bg-white);
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border: 2px solid #e5e7eb;
+        }
+
+        .phone-mockup.before {
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .phone-mockup.after {
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+
+        .phone-header {
+            padding: 1rem;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .phone-mockup.before .phone-header {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--error-red);
+        }
+
+        .phone-mockup.after .phone-header {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--success-green);
+        }
+
+        /* WhatsApp Chat */
+        .whatsapp-container {
+            background: linear-gradient(135deg, #ECE5DD 0%, #d9d2c5 100%);
+            background-image:
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8c1b5' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            border-radius: 0 0 20px 20px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .whatsapp-header {
+            background: var(--whatsapp-green);
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .whatsapp-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cosmo-pink) 0%, var(--cosmo-pink-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-name {
+            color: white;
+            font-weight: 600;
+        }
+
+        .whatsapp-status {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+        }
+
+        .chat-area {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-height: 400px;
+            max-height: 400px;
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 0.6rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+            animation: messageIn 0.3s ease-out;
+            color: #303030;
+        }
+
+        @keyframes messageIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            background: var(--whatsapp-light);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .message.bot {
+            background: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .message.bot.leti {
+            border-left: 3px solid #9C27B0;
+        }
+
+        .message .agent-name {
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: var(--cosmo-pink);
+            margin-bottom: 0.3rem;
+        }
+
+        .message.bot.leti .agent-name {
+            color: #9C27B0;
+        }
+
+        .message-time {
+            font-size: 0.65rem;
+            color: #999;
+            text-align: right;
+            margin-top: 0.2rem;
+        }
+
+        .typing-indicator {
+            background: white;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            align-self: flex-start;
+            display: flex;
+            gap: 0.3rem;
+        }
+
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: #999;
+            border-radius: 50%;
+            animation: typing 1.4s infinite ease-in-out;
+        }
+
+        .typing-indicator span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-indicator span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Control Buttons */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            padding: 1.5rem;
+            background: var(--bg-cream);
+            border-radius: 0 0 20px 20px;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-play {
+            background: linear-gradient(135deg, var(--cosmo-pink) 0%, #C2185B 100%);
+            color: white;
+        }
+
+        .btn-play:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-play:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-reset {
+            background: var(--bg-white);
+            color: var(--text-dark);
+            border: 1px solid #e5e7eb;
+        }
+
+        .btn-reset:hover {
+            background: #f3f4f6;
+            border-color: var(--cosmo-pink);
+        }
+
+        /* Result Badge */
+        .result-badge {
+            text-align: center;
+            padding: 1rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .result-badge.lost {
+            color: var(--error-red);
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 8px;
+            margin: 0.5rem 1rem;
+        }
+
+        .result-badge.won {
+            color: var(--success-green);
+            background: rgba(34, 197, 94, 0.1);
+            border-radius: 8px;
+            margin: 0.5rem 1rem;
+        }
+
+        /* Problems Section */
+        .problems-section {
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .problems-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--cosmo-blue);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .problem-card {
+            background: var(--bg-white);
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cosmo-pink);
+            box-shadow: 0 10px 25px -5px rgba(233, 30, 99, 0.15);
+        }
+
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--cosmo-blue);
+        }
+
+        .problem-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .problem-solution {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            color: var(--success-green);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* Architecture Section */
+        .architecture-section {
+            padding: 4rem 2rem;
+            background: var(--bg-cream);
+        }
+
+        .architecture-section .arch-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .architecture-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: var(--cosmo-blue);
+        }
+
+        .architecture-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: var(--bg-white);
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .arch-node {
+            background: var(--cosmo-pink-light);
+            border: 1px solid var(--cosmo-pink);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 140px;
+        }
+
+        .arch-node-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .arch-node-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--cosmo-blue);
+        }
+
+        .arch-arrow {
+            font-size: 1.5rem;
+            color: var(--cosmo-pink);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: var(--cosmo-blue);
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #FFFFFF;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--cosmo-pink) 0%, #C2185B 100%);
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #e5e7eb;
+            background: var(--bg-white);
+        }
+
+        /* Scrollbar */
+        .chat-area::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-area::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .chat-area::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stat-item">
+            <div class="stat-number">7,282</div>
+            <div class="stat-label">Inscripciones</div>
+        </div>
+        <div class="stat-arrow">→</div>
+        <div class="stat-item">
+            <div class="stat-number">13.7%</div>
+            <div class="stat-label">Conversión actual</div>
+        </div>
+        <div class="stat-arrow">→</div>
+        <div class="stat-item">
+            <div class="stat-number" style="color: #22c55e;">+25%</div>
+            <div class="stat-label">Meta con IA</div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-badge">🤖 Propuesta de Agentes IA</div>
+        <h1>De 13.7% a +25% de conversión</h1>
+        <p class="hero-subtitle">Transformando 7,282 inscripciones en matrículas reales con agentes de IA que educan, asesoran y dan seguimiento personalizado.</p>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section">
+        <div class="demo-inner">
+        <div class="demo-header">
+            <h2>Compara la experiencia</h2>
+            <p style="color: var(--text-muted);">Reproduce ambos escenarios para ver la diferencia</p>
+        </div>
+
+        <div class="demo-container">
+            <!-- BEFORE: Bot Actual -->
+            <div class="phone-mockup before">
+                <div class="phone-header">❌ Bot Actual</div>
+                <div class="whatsapp-container">
+                    <div class="whatsapp-header">
+                        <div class="whatsapp-avatar">🏫</div>
+                        <div>
+                            <div class="whatsapp-name">Cosmo Schools</div>
+                            <div class="whatsapp-status">en línea</div>
+                        </div>
+                    </div>
+                    <div class="chat-area" id="chat-before"></div>
+                    <div class="controls">
+                        <button class="btn btn-play" id="play-before">▶️ Ver escenario</button>
+                        <button class="btn btn-reset" id="reset-before">🔄 Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AFTER: Agentes IA -->
+            <div class="phone-mockup after">
+                <div class="phone-header">✅ Agentes IA</div>
+                <div class="whatsapp-container">
+                    <div class="whatsapp-header">
+                        <div class="whatsapp-avatar">🤖</div>
+                        <div>
+                            <div class="whatsapp-name">Juli - Cosmo Schools</div>
+                            <div class="whatsapp-status">en línea</div>
+                        </div>
+                    </div>
+                    <div class="chat-area" id="chat-after"></div>
+                    <div class="controls">
+                        <button class="btn btn-play" id="play-after">▶️ Ver escenario</button>
+                        <button class="btn btn-reset" id="reset-after">🔄 Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems-section">
+        <h2>Los 3 problemas que resolvemos</h2>
+        <div class="problems-grid">
+            <div class="problem-card">
+                <div class="problem-icon">🤖</div>
+                <h3>1. Rigidez del bot actual</h3>
+                <p>El bot solo sigue scripts predefinidos. Si no hay disponibilidad exacta, no ofrece alternativas y pierde el lead.</p>
+                <div class="problem-solution">✅ Juli entiende contexto y ofrece opciones cercanas automáticamente</div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">📚</div>
+                <h3>2. No educan sobre el valor</h3>
+                <p>Los padres no conocen la metodología, las inmersiones ni los diferenciadores de cada sede.</p>
+                <div class="problem-solution">✅ Juli explica beneficios y diferencias según las necesidades de cada familia</div>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🔔</div>
+                <h3>3. Sin seguimiento proactivo</h3>
+                <p>Una vez el padre dice "lo pienso", nadie hace follow-up. El 86% de leads se enfría.</p>
+                <div class="problem-solution">✅ Leti agenda, confirma y envía recordatorios automáticos antes de cada cita</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture-section">
+        <div class="arch-inner">
+        <h2>Arquitectura propuesta</h2>
+        <div class="architecture-diagram">
+            <div class="arch-node">
+                <div class="arch-node-icon">💬</div>
+                <div class="arch-node-label">WhatsApp</div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">
+                <div class="arch-node-icon">🤖</div>
+                <div class="arch-node-label">Juli<br><small>Asesora IA</small></div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">
+                <div class="arch-node-icon">📅</div>
+                <div class="arch-node-label">Leti<br><small>Agenda IA</small></div>
+            </div>
+            <div class="arch-arrow">→</div>
+            <div class="arch-node">
+                <div class="arch-node-icon">📊</div>
+                <div class="arch-node-label">CRM<br><small>Integración</small></div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>¿Listos para aumentar sus matrículas?</h2>
+        <p>Implementación en 4 semanas. Resultados medibles desde el primer mes.</p>
+        <button class="cta-button">Agendar reunión →</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Demo creado para Cosmo Schools · 11 sedes en Medellín</p>
+    </footer>
+
+    <script>
+        // Conversation data
+        const conversationBefore = [
+            { type: 'user', text: 'Hola, busco cupo para mi hijo de 5 años en Barrio Colombia, jornada mañana' },
+            { type: 'bot', text: '¡Hola! Gracias por contactar a Cosmo Schools 🌟' },
+            { type: 'bot', text: 'No tenemos disponibilidad en esa sede/jornada.' },
+            { type: 'bot', text: 'Te agregamos a lista de espera. Te contactaremos si hay novedades.' },
+            { type: 'user', text: '¿No hay otra opción cerca?' },
+            { type: 'bot', text: 'Revisa disponibilidad en www.cosmo.edu.co' },
+            { type: 'user', text: 'Ok gracias...' },
+            { type: 'result', status: 'lost', text: '❌ LEAD PERDIDO' }
+        ];
+
+        const conversationAfter = [
+            { type: 'user', text: 'Hola, busco cupo para mi hijo de 5 años en Barrio Colombia, jornada mañana' },
+            { type: 'bot', agent: 'Juli 🤖', text: '¡Hola! Qué emoción que consideres Cosmo para la educación de tu pequeño. Déjame revisar opciones para ti...' },
+            { type: 'bot', agent: 'Juli 🤖', text: 'Barrio Colombia en la mañana está lleno, pero tengo 2 alternativas perfectas:\n\n✅ Barrio Colombia TARDE: 3 cupos disponibles\n✅ Sede Poblado: a solo 12 min, jornada mañana disponible\n\n¿Cuál te gustaría explorar?' },
+            { type: 'user', text: 'No sabía lo de Poblado, ¿qué diferencia hay?' },
+            { type: 'bot', agent: 'Juli 🤖', text: 'Ambas tienen la misma metodología Cosmo que nos hace únicos. Poblado tiene más área verde y un huerto escolar donde los niños aprenden sobre naturaleza. 🌱\n\n¿Te gustaría agendar una inmersión gratuita para que tu hijo lo experimente?' },
+            { type: 'user', text: 'Sí, ¿qué es la inmersión?' },
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Hola! Soy Leti, te ayudo con la agenda. 📅\n\nLa inmersión es un día donde tu hijo participa en actividades normales del colegio: clases, recreo y almuerzo. ¡Es gratis!\n\nTengo estos horarios:\n📅 Martes 3 dic - 8am\n📅 Jueves 5 dic - 8am\n\n¿Cuál prefieres?' },
+            { type: 'user', text: 'El jueves' },
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Perfecto! Agendado para el Jueves 5 de diciembre a las 8am en Sede Poblado. ✅\n\nTe envío los detalles a tu correo y te escribo el día anterior con tips para que sea un día increíble. 😊' },
+            { type: 'result', status: 'won', text: '✅ LEAD CONVERTIDO → Inmersión agendada' }
+        ];
+
+        // Chat simulation logic
+        function createMessage(msg) {
+            const div = document.createElement('div');
+
+            if (msg.type === 'result') {
+                div.className = `result-badge ${msg.status}`;
+                div.textContent = msg.text;
+                return div;
+            }
+
+            div.className = `message ${msg.type}`;
+            if (msg.agentClass) div.classList.add(msg.agentClass);
+
+            let content = '';
+            if (msg.agent) {
+                content += `<div class="agent-name">${msg.agent}</div>`;
+            }
+            content += `<div>${msg.text.replace(/\n/g, '<br>')}</div>`;
+            content += `<div class="message-time">${new Date().toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}</div>`;
+
+            div.innerHTML = content;
+            return div;
+        }
+
+        function createTypingIndicator() {
+            const div = document.createElement('div');
+            div.className = 'typing-indicator';
+            div.innerHTML = '<span></span><span></span><span></span>';
+            return div;
+        }
+
+        async function playConversation(chatArea, conversation, playBtn) {
+            playBtn.disabled = true;
+            chatArea.innerHTML = '';
+
+            for (const msg of conversation) {
+                if (msg.type === 'bot') {
+                    // Show typing indicator
+                    const typing = createTypingIndicator();
+                    chatArea.appendChild(typing);
+                    chatArea.scrollTop = chatArea.scrollHeight;
+                    await new Promise(r => setTimeout(r, 1200));
+                    typing.remove();
+                }
+
+                const messageEl = createMessage(msg);
+                chatArea.appendChild(messageEl);
+                chatArea.scrollTop = chatArea.scrollHeight;
+
+                // Delay between messages
+                const delay = msg.type === 'result' ? 500 : (msg.type === 'user' ? 800 : 1500);
+                await new Promise(r => setTimeout(r, delay));
+            }
+
+            playBtn.disabled = false;
+        }
+
+        function resetChat(chatArea) {
+            chatArea.innerHTML = '';
+        }
+
+        // Event listeners
+        document.getElementById('play-before').addEventListener('click', function() {
+            playConversation(
+                document.getElementById('chat-before'),
+                conversationBefore,
+                this
+            );
+        });
+
+        document.getElementById('reset-before').addEventListener('click', function() {
+            resetChat(document.getElementById('chat-before'));
+        });
+
+        document.getElementById('play-after').addEventListener('click', function() {
+            playConversation(
+                document.getElementById('chat-after'),
+                conversationAfter,
+                this
+            );
+        });
+
+        document.getElementById('reset-after').addEventListener('click', function() {
+            resetChat(document.getElementById('chat-after'));
+        });
+    </script>
+</body>
+</html>
