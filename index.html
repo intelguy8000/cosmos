@@ -1175,11 +1175,11 @@
         /* Quick Win Section */
         .quickwin-section {
             padding: 4rem 2rem;
-            background: var(--bg-white);
+            background: var(--bg-cream);
         }
 
         .quickwin-section .quickwin-inner {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -1200,35 +1200,22 @@
             margin-bottom: 2rem;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: 1000px) {
             .quickwin-comparison {
                 grid-template-columns: 1fr;
             }
         }
 
         .quickwin-card {
-            background: var(--bg-cream);
-            border-radius: 16px;
-            padding: 2rem;
             text-align: center;
-            position: relative;
-        }
-
-        .quickwin-card.current {
-            border: 2px solid #e5e7eb;
-        }
-
-        .quickwin-card.proposed {
-            border: 2px solid var(--success-green);
-            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         }
 
         .quickwin-card-label {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
-            padding: 0.3rem 1rem;
+            margin-bottom: 1rem;
+            padding: 0.4rem 1.2rem;
             border-radius: 20px;
             display: inline-block;
         }
@@ -1243,107 +1230,281 @@
             color: white;
         }
 
-        /* WhatsApp Button Mockups */
-        .wa-button-container {
-            height: 140px;
+        /* Browser Mockup */
+        .browser-mockup {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid #e5e7eb;
+        }
+
+        .browser-bar {
+            background: #f1f3f4;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .browser-dot.red { background: #ff5f57; }
+        .browser-dot.yellow { background: #ffbd2e; }
+        .browser-dot.green { background: #28c840; }
+
+        .browser-url {
+            flex: 1;
+            background: white;
+            border-radius: 6px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .browser-url-lock {
+            color: #22c55e;
+        }
+
+        /* Cosmo Page Replica */
+        .cosmo-page {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .cosmo-hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            height: 100%;
+            position: relative;
+            padding: 0.8rem;
+        }
+
+        .cosmo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .cosmo-logo {
+            height: 28px;
+            filter: brightness(0) invert(1);
+        }
+
+        .cosmo-nav {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .cosmo-nav-item {
+            font-size: 0.55rem;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+        }
+
+        .cosmo-nav-item.highlight {
+            background: var(--cosmo-pink);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            color: white;
+        }
+
+        .cosmo-content {
+            display: flex;
+            gap: 1rem;
+            height: calc(100% - 50px);
+        }
+
+        .cosmo-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .cosmo-card {
+            background: rgba(245, 245, 240, 0.95);
+            border-radius: 12px;
+            padding: 1rem;
+            max-width: 200px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cosmo-card-title {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--cosmo-pink);
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+        }
+
+        .cosmo-card-text {
+            font-size: 0.5rem;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+            line-height: 1.4;
+        }
+
+        .cosmo-card-btn {
+            background: var(--cosmo-pink);
+            color: white;
+            font-size: 0.5rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            border: none;
+            font-weight: 600;
+        }
+
+        /* Decorative circles */
+        .cosmo-circles {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cosmo-circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        .cosmo-circle.green { background: #22c55e; }
+        .cosmo-circle.yellow { background: #eab308; }
+        .cosmo-circle.blue { background: #3b82f6; }
+        .cosmo-circle.pink { background: var(--cosmo-pink); }
+
+        /* Social bar */
+        .cosmo-social {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: rgba(0,0,0,0.3);
+            padding: 4px;
+            border-radius: 6px;
+        }
+
+        .cosmo-social-icon {
+            width: 16px;
+            height: 16px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            margin-bottom: 1.5rem;
+            font-size: 0.5rem;
+            color: white;
         }
 
-        .wa-button-container.current-style {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 12px;
-            justify-content: flex-end;
-            align-items: flex-end;
-            padding: 1rem;
-        }
-
-        /* Cosmo Style Button (Current) */
-        .wa-button-cosmo {
+        /* WhatsApp Button - Current (Cosmo style) */
+        .wa-btn-current {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.3rem;
-            cursor: pointer;
-            opacity: 0.85;
+            gap: 2px;
+            z-index: 10;
         }
 
-        .wa-button-cosmo-icon {
-            width: 50px;
-            height: 50px;
+        .wa-btn-current-icon {
+            width: 36px;
+            height: 36px;
             background: var(--cosmo-pink);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(233, 30, 99, 0.3);
+            box-shadow: 0 2px 6px rgba(233, 30, 99, 0.3);
         }
 
-        .wa-button-cosmo-icon svg {
-            width: 28px;
-            height: 28px;
+        .wa-btn-current-icon svg {
+            width: 20px;
+            height: 20px;
             fill: white;
         }
 
-        .wa-button-cosmo-text {
-            font-size: 0.7rem;
+        .wa-btn-current-text {
+            font-size: 0.45rem;
             font-weight: 600;
             color: var(--cosmo-pink);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
-        /* Proposed Button */
-        .wa-button {
+        /* WhatsApp Button - Proposed (Green animated) */
+        .wa-btn-proposed {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            z-index: 10;
+        }
+
+        .wa-btn-proposed-main {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            border: none;
-            position: relative;
-        }
-
-        .wa-button.proposed {
+            gap: 6px;
             background: #25D366;
             color: white;
-            transform: scale(1.1);
+            padding: 8px 14px;
+            border-radius: 25px;
+            font-size: 0.7rem;
+            font-weight: 600;
             box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
             animation: waPulse 2s ease-in-out infinite;
+            position: relative;
         }
 
         @keyframes waPulse {
             0%, 100% {
                 box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-                transform: scale(1.1);
+                transform: scale(1);
             }
             50% {
-                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6), 0 0 40px rgba(37, 211, 102, 0.3);
-                transform: scale(1.15);
+                box-shadow: 0 4px 25px rgba(37, 211, 102, 0.6), 0 0 35px rgba(37, 211, 102, 0.3);
+                transform: scale(1.05);
             }
         }
 
-        .wa-button-icon {
-            font-size: 1.4rem;
+        .wa-btn-proposed-main svg {
+            width: 18px;
+            height: 18px;
+            fill: white;
         }
 
-        /* Notification Badge */
-        .wa-badge {
+        .wa-btn-badge {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -6px;
+            right: -6px;
             background: #ef4444;
             color: white;
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            font-size: 0.75rem;
+            font-size: 0.6rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -1352,59 +1513,54 @@
         }
 
         @keyframes badgeBounce {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
         }
 
-        /* Tooltip Bubble */
-        .wa-tooltip {
+        .wa-btn-tooltip {
             position: absolute;
             bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
+            right: 0;
             background: var(--cosmo-blue);
             color: white;
-            padding: 0.6rem 1rem;
-            border-radius: 12px;
-            font-size: 0.8rem;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 0.6rem;
             white-space: nowrap;
-            margin-bottom: 0.8rem;
+            margin-bottom: 8px;
             animation: tooltipFloat 3s ease-in-out infinite;
         }
 
-        .wa-tooltip::after {
+        .wa-btn-tooltip::after {
             content: '';
             position: absolute;
             top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 8px solid transparent;
+            right: 15px;
+            border: 6px solid transparent;
             border-top-color: var(--cosmo-blue);
         }
 
         @keyframes tooltipFloat {
-            0%, 100% {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-            50% {
-                transform: translateX(-50%) translateY(-5px);
-                opacity: 0.9;
-            }
+            0%, 100% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-3px); opacity: 0.9; }
         }
 
         .quickwin-tag {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .quickwin-card.current .quickwin-tag {
+            color: #991b1b;
+            background: #fee2e2;
         }
 
         .quickwin-card.proposed .quickwin-tag {
-            color: var(--success-green);
+            color: #166534;
+            background: #dcfce7;
             font-weight: 600;
         }
 
@@ -2700,34 +2856,124 @@
             </div>
 
             <div class="quickwin-comparison">
-                <!-- Current Button -->
+                <!-- Current State -->
                 <div class="quickwin-card current">
                     <span class="quickwin-card-label">Actual</span>
-                    <div class="wa-button-container current-style">
-                        <div class="wa-button-cosmo">
-                            <div class="wa-button-cosmo-icon">
-                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                                </svg>
+                    <div class="browser-mockup">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
                             </div>
-                            <span class="wa-button-cosmo-text">Aplicar 2026</span>
+                            <div class="browser-url">
+                                <span class="browser-url-lock">🔒</span>
+                                cosmo.edu.co
+                            </div>
+                        </div>
+                        <div class="cosmo-page">
+                            <div class="cosmo-hero">
+                                <div class="cosmo-header">
+                                    <img src="https://images.ctfassets.net/orp4t2combw2/4abb3HTxr5BmjRmV75zexS/b944c02c446a56b764ffb75caab22e90/Cosmo-Fondo-Transparente.png" alt="Cosmo" class="cosmo-logo">
+                                    <div class="cosmo-nav">
+                                        <span class="cosmo-nav-item">¿Quiénes somos?</span>
+                                        <span class="cosmo-nav-item highlight">Aplicar 2026</span>
+                                        <span class="cosmo-nav-item">Colegios</span>
+                                    </div>
+                                </div>
+                                <div class="cosmo-content">
+                                    <div class="cosmo-main">
+                                        <div class="cosmo-card">
+                                            <p class="cosmo-card-title">Aplica a una beca de Comfama para estudiar en la jornada de la tarde</p>
+                                            <p class="cosmo-card-text">Descubre las oportunidades que tenemos para ti y tu familia.</p>
+                                            <button class="cosmo-card-btn">Quiero postularme</button>
+                                        </div>
+                                        <div class="cosmo-circles">
+                                            <div class="cosmo-circle green"></div>
+                                            <div class="cosmo-circle yellow"></div>
+                                            <div class="cosmo-circle blue"></div>
+                                            <div class="cosmo-circle pink"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cosmo-social">
+                                    <div class="cosmo-social-icon">📷</div>
+                                    <div class="cosmo-social-icon">💼</div>
+                                    <div class="cosmo-social-icon">🎬</div>
+                                    <div class="cosmo-social-icon">🎵</div>
+                                </div>
+                                <!-- Current WhatsApp Button -->
+                                <div class="wa-btn-current">
+                                    <div class="wa-btn-current-icon">
+                                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                    </div>
+                                    <span class="wa-btn-current-text">Aplicar 2026</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <p class="quickwin-tag">Fácil de ignorar 👀</p>
+                    <p class="quickwin-tag">❌ El botón se pierde entre tanto contenido</p>
                 </div>
 
-                <!-- Proposed Button -->
+                <!-- Proposed State -->
                 <div class="quickwin-card proposed">
-                    <span class="quickwin-card-label">Propuesto</span>
-                    <div class="wa-button-container">
-                        <div class="wa-tooltip">¿Buscas cupo para 2026? 💬</div>
-                        <button class="wa-button proposed">
-                            <span class="wa-button-icon">💬</span>
-                            <span>Chatea con Juli</span>
-                            <span class="wa-badge">1</span>
-                        </button>
+                    <span class="quickwin-card-label">Con nuestra mejora</span>
+                    <div class="browser-mockup">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span class="browser-dot red"></span>
+                                <span class="browser-dot yellow"></span>
+                                <span class="browser-dot green"></span>
+                            </div>
+                            <div class="browser-url">
+                                <span class="browser-url-lock">🔒</span>
+                                cosmo.edu.co
+                            </div>
+                        </div>
+                        <div class="cosmo-page">
+                            <div class="cosmo-hero">
+                                <div class="cosmo-header">
+                                    <img src="https://images.ctfassets.net/orp4t2combw2/4abb3HTxr5BmjRmV75zexS/b944c02c446a56b764ffb75caab22e90/Cosmo-Fondo-Transparente.png" alt="Cosmo" class="cosmo-logo">
+                                    <div class="cosmo-nav">
+                                        <span class="cosmo-nav-item">¿Quiénes somos?</span>
+                                        <span class="cosmo-nav-item highlight">Aplicar 2026</span>
+                                        <span class="cosmo-nav-item">Colegios</span>
+                                    </div>
+                                </div>
+                                <div class="cosmo-content">
+                                    <div class="cosmo-main">
+                                        <div class="cosmo-card">
+                                            <p class="cosmo-card-title">Aplica a una beca de Comfama para estudiar en la jornada de la tarde</p>
+                                            <p class="cosmo-card-text">Descubre las oportunidades que tenemos para ti y tu familia.</p>
+                                            <button class="cosmo-card-btn">Quiero postularme</button>
+                                        </div>
+                                        <div class="cosmo-circles">
+                                            <div class="cosmo-circle green"></div>
+                                            <div class="cosmo-circle yellow"></div>
+                                            <div class="cosmo-circle blue"></div>
+                                            <div class="cosmo-circle pink"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cosmo-social">
+                                    <div class="cosmo-social-icon">📷</div>
+                                    <div class="cosmo-social-icon">💼</div>
+                                    <div class="cosmo-social-icon">🎬</div>
+                                    <div class="cosmo-social-icon">🎵</div>
+                                </div>
+                                <!-- Proposed WhatsApp Button -->
+                                <div class="wa-btn-proposed">
+                                    <div class="wa-btn-tooltip">¿Buscas cupo para 2026? 💬</div>
+                                    <div class="wa-btn-proposed-main">
+                                        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                        <span>Chatea con Juli</span>
+                                        <span class="wa-btn-badge">1</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="quickwin-tag">Imposible ignorar ✨</p>
+                    <p class="quickwin-tag">✅ Imposible ignorar - Invita a la acción</p>
                 </div>
             </div>
 
