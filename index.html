@@ -1635,6 +1635,163 @@
             color: white;
         }
 
+        /* Timeline Section */
+        .timeline-section {
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .timeline-section .timeline-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-header h2 {
+            font-size: 2rem;
+            color: var(--cosmo-blue);
+        }
+
+        .timeline-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 0;
+            position: relative;
+        }
+
+        .timeline-stage {
+            flex: 1;
+            max-width: 250px;
+            text-align: center;
+            position: relative;
+        }
+
+        .timeline-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-stage:nth-child(1) .timeline-icon {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 3px solid #3b82f6;
+        }
+
+        .timeline-stage:nth-child(3) .timeline-icon {
+            background: linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%);
+            border: 3px solid #6366f1;
+        }
+
+        .timeline-stage:nth-child(5) .timeline-icon {
+            background: linear-gradient(135deg, #a5b4fc 0%, #818cf8 100%);
+            border: 3px solid #4f46e5;
+        }
+
+        .timeline-stage:nth-child(7) .timeline-icon {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 3px solid #22c55e;
+        }
+
+        .timeline-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--cosmo-pink);
+            padding: 0 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .timeline-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--cosmo-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.8rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .timeline-objective {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .timeline-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding: 1rem 2rem;
+            background: var(--bg-cream);
+            border-radius: 12px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .timeline-note p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .timeline-note strong {
+            color: var(--cosmo-blue);
+        }
+
+        @media (max-width: 900px) {
+            .timeline-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+            }
+
+            .timeline-stage {
+                max-width: 100%;
+                width: 100%;
+                display: flex;
+                align-items: flex-start;
+                text-align: left;
+                gap: 1rem;
+                padding: 1rem 0;
+            }
+
+            .timeline-icon {
+                width: 60px;
+                height: 60px;
+                min-width: 60px;
+                font-size: 1.5rem;
+                margin: 0;
+            }
+
+            .timeline-content {
+                flex: 1;
+            }
+
+            .timeline-arrow {
+                transform: rotate(90deg);
+                margin: 0;
+                padding: 0.5rem 0;
+            }
+        }
+
         /* CTA Section */
         .cta-section {
             padding: 4rem 2rem;
@@ -2480,6 +2637,67 @@
                     </ul>
                     <span class="scope-badge">Fase B: Nuevas capacidades (Iterativo)</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="timeline-inner">
+            <div class="timeline-header">
+                <h2>🚀 Modelo de Implementación</h2>
+            </div>
+
+            <div class="timeline-container">
+                <!-- Stage 1: Piloto -->
+                <div class="timeline-stage">
+                    <div class="timeline-icon">📋</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">PILOTO</div>
+                        <p class="timeline-desc">Implementación controlada con subset de leads</p>
+                        <p class="timeline-objective">Validar hipótesis y medir impacto real</p>
+                    </div>
+                </div>
+
+                <div class="timeline-arrow">→</div>
+
+                <!-- Stage 2: Experimentación -->
+                <div class="timeline-stage">
+                    <div class="timeline-icon">🧪</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">EXPERIMENTACIÓN</div>
+                        <p class="timeline-desc">Probar diferentes modelos de IA para cada rol</p>
+                        <p class="timeline-objective">Encontrar el mejor modelo para cada agente (costo vs calidad)</p>
+                    </div>
+                </div>
+
+                <div class="timeline-arrow">→</div>
+
+                <!-- Stage 3: Refinamiento -->
+                <div class="timeline-stage">
+                    <div class="timeline-icon">🔧</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">REFINAMIENTO</div>
+                        <p class="timeline-desc">Ajustar perfiles de agentes y journey de usuarios</p>
+                        <p class="timeline-objective">Optimizar conversión basado en datos reales</p>
+                    </div>
+                </div>
+
+                <div class="timeline-arrow">→</div>
+
+                <!-- Stage 4: Producción -->
+                <div class="timeline-stage">
+                    <div class="timeline-icon">🎯</div>
+                    <div class="timeline-content">
+                        <div class="timeline-title">PRODUCCIÓN 2026</div>
+                        <p class="timeline-desc">Lanzamiento completo</p>
+                        <p class="timeline-objective">Listos para temporada de matrículas 2026</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-note">
+                <p><strong>Enfoque iterativo:</strong> medimos, aprendemos, mejoramos</p>
             </div>
         </div>
     </section>
