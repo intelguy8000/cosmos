@@ -107,7 +107,7 @@
 
         /* Header Stats Bar */
         .stats-bar {
-            background: var(--cosmo-blue);
+            background: var(--bg-cream);
             padding: 1rem 2rem;
             display: flex;
             justify-content: center;
@@ -124,12 +124,12 @@
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: #FFFFFF;
+            color: var(--cosmo-blue);
         }
 
         .stat-label {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-muted);
         }
 
         .stat-arrow {
@@ -200,7 +200,7 @@
         }
 
         .demo-case {
-            background: var(--cosmo-blue);
+            background: var(--cosmo-pink);
             color: white;
             padding: 0.8rem 1.5rem;
             border-radius: 8px;
@@ -1796,7 +1796,7 @@
         .cta-section {
             padding: 4rem 2rem;
             text-align: center;
-            background: var(--cosmo-blue);
+            background: linear-gradient(135deg, var(--cosmo-pink) 0%, #C2185B 100%);
         }
 
         .cta-section h2 {
@@ -1806,15 +1806,15 @@
         }
 
         .cta-section p {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
             font-size: 1.1rem;
         }
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--cosmo-pink) 0%, #C2185B 100%);
-            color: white;
+            background: #FFFFFF;
+            color: var(--cosmo-pink);
             padding: 1rem 3rem;
             border-radius: 50px;
             text-decoration: none;
@@ -1827,17 +1827,19 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: var(--cosmo-pink-light);
+            color: var(--cosmo-pink);
         }
 
         .cta-credit {
             margin-top: 1.5rem;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .cta-credit a {
-            color: rgba(255, 255, 255, 0.9);
+            color: #FFFFFF;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s ease;
@@ -1913,7 +1915,7 @@
         </div>
         <div class="stat-arrow">→</div>
         <div class="stat-item">
-            <div class="stat-number" style="color: #22c55e;">+25%</div>
+            <div class="stat-number" style="color: var(--cosmo-pink);">+25%</div>
             <div class="stat-label">Meta con IA</div>
         </div>
     </div>
