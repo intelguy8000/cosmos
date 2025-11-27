@@ -533,10 +533,230 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Stages Section */
+        .stages-section {
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .stages-section .stages-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stages-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .stages-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--cosmo-blue);
+        }
+
+        .stages-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .stages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .stages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stage-card {
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .stage-card.explore {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 2px solid #22c55e;
+        }
+
+        .stage-card.schedule {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 2px solid #3b82f6;
+        }
+
+        .stage-card.enroll {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border: 2px solid #9ca3af;
+        }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stage-icon {
+            font-size: 1.5rem;
+        }
+
+        .stage-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .stage-card.explore .stage-title { color: #166534; }
+        .stage-card.schedule .stage-title { color: #1e40af; }
+        .stage-card.enroll .stage-title { color: #374151; }
+
+        .stage-time {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .stage-card.explore .stage-time {
+            background: #22c55e;
+            color: white;
+        }
+
+        .stage-card.schedule .stage-time {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .stage-card.enroll .stage-time {
+            background: #6b7280;
+            color: white;
+        }
+
+        .stage-data-label {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .stage-data-list {
+            list-style: none;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .stage-data-list li {
+            padding: 0.2rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .stage-data-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .stage-card.explore .stage-data-list li::before { color: #22c55e; }
+        .stage-card.schedule .stage-data-list li::before { color: #3b82f6; }
+        .stage-card.enroll .stage-data-list li::before { color: #6b7280; }
+
+        .stage-result {
+            padding: 0.6rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .stage-card.explore .stage-result {
+            background: rgba(34, 197, 94, 0.2);
+            color: #166534;
+        }
+
+        .stage-card.schedule .stage-result {
+            background: rgba(59, 130, 246, 0.2);
+            color: #1e40af;
+        }
+
+        .stage-card.enroll .stage-result {
+            background: rgba(107, 114, 128, 0.2);
+            color: #374151;
+        }
+
+        .stage-badge {
+            position: absolute;
+            top: -0.5rem;
+            right: 1rem;
+            background: #6b7280;
+            color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .stage-arrow {
+            display: none;
+            font-size: 2rem;
+            color: var(--cosmo-pink);
+            align-self: center;
+        }
+
+        @media (min-width: 901px) {
+            .stages-grid {
+                grid-template-columns: 1fr auto 1fr auto 1fr;
+            }
+            .stage-arrow {
+                display: block;
+            }
+        }
+
+        .comparison-boxes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .comparison-boxes {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .comparison-box {
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .comparison-box.bad {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 1px solid #ef4444;
+            color: #991b1b;
+        }
+
+        .comparison-box.good {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 1px solid #22c55e;
+            color: #166534;
+        }
+
         /* Problems Section */
         .problems-section {
             padding: 4rem 2rem;
-            background: var(--bg-white);
+            background: var(--bg-cream);
         }
 
         .problems-section h2 {
@@ -746,7 +966,7 @@
             <h2>Compara la experiencia</h2>
             <p class="demo-subtitle">Reproduce ambos escenarios para ver la diferencia</p>
             <div class="demo-case">
-                📋 <strong>Caso:</strong> Mamá Camila busca cupo para Juliana · Grado 9° · Barrio Colombia · Jornada Mañana
+                📋 <strong>Caso:</strong> Papá Dario busca cupo para Juliana (13 años) · Comuna 13 · Jornada Tarde
             </div>
         </div>
 
@@ -821,20 +1041,20 @@
                     <div class="metrics-title">📊 Resultado con Agentes IA</div>
                     <div class="metrics-grid">
                         <div class="metric-item">
-                            <div class="metric-value">2 min</div>
+                            <div class="metric-value">5 min</div>
                             <div class="metric-label">Tiempo</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">3</div>
+                            <div class="metric-value">8</div>
                             <div class="metric-label">Preguntas</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">2</div>
-                            <div class="metric-label">Datos mínimos</div>
+                            <div class="metric-value">7</div>
+                            <div class="metric-label">Datos (etapas 1+2)</div>
                         </div>
                         <div class="metric-item">
-                            <div class="metric-value">2</div>
-                            <div class="metric-label">Alternativas</div>
+                            <div class="metric-value">✅</div>
+                            <div class="metric-label">Cupo verificado</div>
                         </div>
                         <div class="metric-item">
                             <div class="metric-value">🎉</div>
@@ -849,6 +1069,85 @@
                 </div>
             </div>
         </div>
+        </div>
+    </section>
+
+    <!-- Stages Section -->
+    <section class="stages-section">
+        <div class="stages-inner">
+            <div class="stages-header">
+                <h2>📍 Nuestra Estrategia: Datos en el Momento Correcto</h2>
+                <p>No eliminamos preguntas — las reordenamos estratégicamente</p>
+            </div>
+
+            <div class="stages-grid">
+                <!-- Stage 1: Explore -->
+                <div class="stage-card explore">
+                    <div class="stage-header">
+                        <span class="stage-icon">🔍</span>
+                        <span class="stage-title">EXPLORAR</span>
+                    </div>
+                    <span class="stage-time">~2 min</span>
+                    <div class="stage-data-label">Datos que pedimos:</div>
+                    <ul class="stage-data-list">
+                        <li>Edad del aspirante (→ grado)</li>
+                        <li>Zona donde viven</li>
+                        <li>Preferencia de horario</li>
+                    </ul>
+                    <div class="stage-result">Verificar cupo + ofrecer alternativas</div>
+                </div>
+
+                <div class="stage-arrow">→</div>
+
+                <!-- Stage 2: Schedule -->
+                <div class="stage-card schedule">
+                    <div class="stage-header">
+                        <span class="stage-icon">📅</span>
+                        <span class="stage-title">AGENDAR INMERSIÓN</span>
+                    </div>
+                    <span class="stage-time">~3 min</span>
+                    <div class="stage-data-label">Datos que pedimos:</div>
+                    <ul class="stage-data-list">
+                        <li>Autorización legal</li>
+                        <li>Nombre acudiente</li>
+                        <li>Nombre aspirante</li>
+                        <li>Teléfono emergencia</li>
+                        <li>Necesidades especiales</li>
+                    </ul>
+                    <div class="stage-result">Inmersión confirmada ✅</div>
+                </div>
+
+                <div class="stage-arrow">→</div>
+
+                <!-- Stage 3: Enroll -->
+                <div class="stage-card enroll">
+                    <span class="stage-badge">Solo si deciden continuar</span>
+                    <div class="stage-header">
+                        <span class="stage-icon">📋</span>
+                        <span class="stage-title">MATRICULAR</span>
+                    </div>
+                    <span class="stage-time">Post-inmersión</span>
+                    <div class="stage-data-label">Datos que pedimos:</div>
+                    <ul class="stage-data-list">
+                        <li>Documentos de identidad</li>
+                        <li>Ingresos familiares</li>
+                        <li>Dirección exacta</li>
+                        <li>Institución anterior</li>
+                        <li>Capacidades/talentos</li>
+                        <li>Info facturación</li>
+                    </ul>
+                    <div class="stage-result">Matrícula formalizada ✅</div>
+                </div>
+            </div>
+
+            <div class="comparison-boxes">
+                <div class="comparison-box bad">
+                    ❌ <strong>Bot actual:</strong> Pide los 24 datos ANTES de verificar disponibilidad
+                </div>
+                <div class="comparison-box good">
+                    ✅ <strong>Agentes IA:</strong> 7 datos para explorar + agendar, el resto después
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1001,38 +1300,49 @@
             { type: 'thought', emoji: '😡🤯', text: '¿¿¿20+ PREGUNTAS, 15 MIN, MIS DATOS PERSONALES, TODO PARA "ESPERE DÍAS"??? ¿¿¿SIN NINGUNA ALTERNATIVA???', sentiment: 'negative' },
         ];
 
-        // CONVERSATION AFTER - AI Agents Flow
+        // CONVERSATION AFTER - AI Agents Flow (Complete Roleplay)
         const conversationAfter = [
-            { type: 'bot', agent: 'Juli 🤖', text: '¡Hola! Soy Juli, tu asesora en Cosmo 🌟\n\n¿Para qué grado y sede estás buscando cupo?' },
-            { type: 'thought', emoji: '😊', text: 'Directo al punto, me gusta', sentiment: 'positive' },
+            { type: 'bot', agent: 'Juli 🤖', text: '¡Hola! Soy Juli, tu asesora en Cosmo 🌟\n\n¿Estás buscando cupo para el próximo año? Cuéntame, ¿para quién sería?' },
+            { type: 'thought', emoji: '😊', text: 'Amable y abierta', sentiment: 'positive' },
 
-            { type: 'user', text: 'Noveno, Barrio Colombia, jornada mañana para mi hija Juliana' },
+            { type: 'user', text: 'Sí, para mi hija de 13 años' },
 
-            { type: 'bot', agent: 'Juli 🤖', text: 'Perfecto, déjame verificar disponibilidad para Noveno en Barrio Colombia mañana... 🔍' },
-            { type: 'thought', emoji: '😮', text: '¡Verifica ANTES de pedirme 20 datos!', sentiment: 'positive' },
+            { type: 'bot', agent: 'Juli 🤖', text: '¡Perfecto! Con 13 añitos entraría a Noveno grado 📚\n\n¿En qué zona de Medellín viven? Así te recomiendo la sede más cercana 📍' },
+            { type: 'thought', emoji: '😊', text: 'Deduce el grado, me ayuda con sede', sentiment: 'positive' },
 
-            { type: 'bot', agent: 'Juli 🤖', text: 'Camila, Barrio Colombia mañana está completo para Noveno. Pero tengo buenas opciones para Juliana:\n\n✅ Barrio Colombia TARDE → 3 cupos\n✅ Sede Poblado → A 12 min, mañana disponible\n\n¿Te cuento sobre alguna?' },
-            { type: 'thought', emoji: '😃', text: '¡Tiene alternativas! No me dejó en el limbo', sentiment: 'positive' },
+            { type: 'user', text: 'Por la comuna 13, San Javier' },
 
-            { type: 'user', text: 'Cuéntame de Poblado' },
+            { type: 'bot', agent: 'Juli 🤖', text: '¡Comuna 13! La sede más cercana es Cosmo Belén, a 10-15 min.\n\n¿Preferencia de horario?\n☀️ Mañana (6:30am - 1:30pm)\n🌙 Tarde (12:30pm - 6:30pm)' },
+            { type: 'thought', emoji: '😮', text: 'Me explica opciones claras', sentiment: 'positive' },
 
-            { type: 'bot', agent: 'Juli 🤖', text: 'Poblado tiene la misma metodología y profes certificados que Barrio Colombia.\n\nPlus: tiene más área verde y huerto donde los estudiantes aprenden cultivando 🌱\n\n¿Te gustaría agendar una inmersión gratuita para que Juliana viva un día en Cosmo?' },
-            { type: 'thought', emoji: '🥰', text: 'Me vende con cariño, no con formularios', sentiment: 'positive' },
+            { type: 'user', text: 'Tarde, por mi trabajo' },
 
-            { type: 'user', text: 'Sí, me interesa' },
+            { type: 'bot', agent: 'Juli 🤖', text: 'Verificando Noveno en Belén tarde... 🔍\n\n¡Buenas noticias! Hay cupos ✅\n\n¿Agendamos una inmersión gratuita? Tu hija viviría un día en Cosmo 😊' },
+            { type: 'thought', emoji: '😃', text: '¡Verificó ANTES de pedir datos!', sentiment: 'positive' },
 
-            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Genial! Soy Leti, te ayudo con el agendamiento 📅\n\nPara Noveno en Poblado tengo:\n• Martes 3 dic - 8:00am\n• Jueves 5 dic - 8:00am\n\n¿Cuál le funciona mejor a Juliana?' },
-            { type: 'thought', emoji: '😊', text: 'Fluido, pasó a otro agente pero natural', sentiment: 'positive' },
+            { type: 'user', text: 'Sí me interesa' },
 
-            { type: 'user', text: 'El jueves' },
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Genial! Soy Leti 📅\n\nPara inscribir menores necesito tu autorización de datos personales.\n👉 cosmo.edu.co/datos\n\n¿Aceptas?' },
+            { type: 'thought', emoji: '😊', text: 'Tiene sentido, es legal', sentiment: 'positive' },
 
-            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Perfecto! Para confirmar la inmersión de Juliana solo necesito:\n• Tu nombre completo\n• Correo electrónico\n\nAsí te envío la confirmación 📧' },
-            { type: 'thought', emoji: '😌', text: 'AHORA sí tiene sentido dar mis datos', sentiment: 'positive' },
+            { type: 'user', text: 'Sí acepto' },
 
-            { type: 'user', text: 'Camila Uribe, camila@email.com' },
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: 'Perfecto ✅ Cuéntame:\n• ¿Tu nombre completo?\n• ¿Nombre de tu hija?\n• ¿Celular de contacto? 📞' },
+            { type: 'thought', emoji: '😊', text: 'Solo lo necesario', sentiment: 'positive' },
 
-            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Listo Camila! ✅\n\nAgendé la inmersión de Juliana para:\n📅 Jueves 5 de diciembre, 8:00am\n📍 Sede Poblado\n\nTe envié la confirmación al correo. El día anterior te escribo con tips para que Juliana llegue preparada 😊' },
-            { type: 'thought', emoji: '🎉', text: '¡2 minutos y TODO resuelto!', sentiment: 'positive' },
+            { type: 'user', text: 'Dario Uribe, mi hija Juliana, 301 234 5678' },
+
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Gracias Dario! ¿Juliana tiene alguna necesidad especial que debamos preparar para su inmersión? (movilidad, audición, aprendizaje, etc.)' },
+            { type: 'thought', emoji: '😊', text: 'Preguntan con propósito claro', sentiment: 'positive' },
+
+            { type: 'user', text: 'No, ninguna' },
+
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: 'Para Belén tarde tengo:\n📅 Lunes 2 dic - 12:30pm\n📅 Miércoles 4 dic - 12:30pm\n\n¿Cuál prefieren?' },
+
+            { type: 'user', text: 'El lunes' },
+
+            { type: 'bot', agent: 'Leti 🤖', agentClass: 'leti', text: '¡Listo Dario! ✅\n\n📅 Lunes 2 dic, 12:30pm\n📍 Cosmo Belén - Tarde\n👧 Juliana - Noveno\n📞 301 234 5678\n\nTe escribo el domingo con tips.\n\n💡 Si deciden continuar después de la inmersión, ahí completamos datos de matrícula 😊' },
+            { type: 'thought', emoji: '🎉', text: '¡5 min, todo claro!', sentiment: 'positive' },
         ];
 
         // Chat simulation logic
