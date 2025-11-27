@@ -1168,10 +1168,301 @@
             font-size: 0.9rem;
         }
 
+        /* Design Principles Section */
+        .principles-section {
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .principles-section .principles-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .principles-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .principles-header h2 {
+            font-size: 2rem;
+            color: var(--cosmo-blue);
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .principles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .principles-text {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .principle-block {
+            background: var(--bg-cream);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--cosmo-pink);
+        }
+
+        .principle-block h3 {
+            font-size: 1.1rem;
+            color: var(--cosmo-blue);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .principle-block ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .principle-block li {
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .principle-block li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--cosmo-pink);
+            font-weight: bold;
+        }
+
+        .layers-diagram {
+            background: var(--bg-cream);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .layer-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .layer-row {
+            display: flex;
+            align-items: center;
+            background: var(--bg-white);
+            border: 2px solid #e5e7eb;
+            padding: 1rem 1.2rem;
+            transition: all 0.2s ease;
+        }
+
+        .layer-row:first-child {
+            border-radius: 12px 12px 0 0;
+        }
+
+        .layer-row:last-child {
+            border-radius: 0 0 12px 12px;
+        }
+
+        .layer-row:not(:last-child) {
+            border-bottom: none;
+        }
+
+        .layer-row:hover {
+            background: var(--cosmo-pink-light);
+            border-color: var(--cosmo-pink);
+        }
+
+        .layer-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--cosmo-blue);
+            min-width: 140px;
+        }
+
+        .layer-arrow {
+            color: var(--cosmo-pink);
+            margin: 0 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .layer-icons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .layer-icon {
+            background: var(--bg-cream);
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Infrastructure Section */
+        .infra-section {
+            padding: 4rem 2rem;
+            background: var(--bg-cream);
+        }
+
+        .infra-section .infra-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .infra-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .infra-header h2 {
+            font-size: 2rem;
+            color: var(--cosmo-blue);
+        }
+
+        .infra-diagram {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .infra-layer {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .infra-layer:last-child {
+            margin-bottom: 0;
+        }
+
+        .infra-layer-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .infra-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .infra-box {
+            background: var(--bg-cream);
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            text-align: center;
+            min-width: 100px;
+            transition: all 0.2s ease;
+        }
+
+        .infra-box:hover {
+            border-color: var(--cosmo-pink);
+            transform: translateY(-2px);
+        }
+
+        .infra-box.channel {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .infra-box.agent {
+            border-color: var(--success-green);
+            background: #f0fdf4;
+        }
+
+        .infra-box.orchestrator {
+            border-color: var(--cosmo-pink);
+            background: var(--cosmo-pink-light);
+        }
+
+        .infra-box.model {
+            border-color: #8b5cf6;
+            background: #f5f3ff;
+        }
+
+        .infra-box.integration {
+            border-color: #f59e0b;
+            background: #fffbeb;
+        }
+
+        .infra-box-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .infra-box-label {
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--cosmo-blue);
+        }
+
+        .infra-box-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .infra-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--cosmo-pink);
+            margin: 0.5rem 0;
+        }
+
+        .infra-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+
+        .infra-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .infra-footer-text {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .infra-footer-text span {
+            font-weight: 600;
+            color: var(--cosmo-blue);
+        }
+
         /* Architecture Section */
         .architecture-section {
             padding: 4rem 2rem;
-            background: var(--bg-cream);
+            background: var(--bg-white);
         }
 
         .architecture-section .arch-inner {
@@ -1802,6 +2093,206 @@
                 <h3>3. Experiencia frustrante</h3>
                 <p>15+ minutos de preguntas para terminar en "REVISIÓN". El 86% de leads abandona antes de terminar.</p>
                 <div class="problem-solution">✅ 2 minutos hasta inmersión agendada. Sentimiento positivo constante</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Principles Section -->
+    <section class="principles-section">
+        <div class="principles-inner">
+            <div class="principles-header">
+                <h2>📐 Principios de Diseño</h2>
+            </div>
+
+            <div class="principles-grid">
+                <!-- Left Column: Text Blocks -->
+                <div class="principles-text">
+                    <div class="principle-block">
+                        <h3>🔌 Framework Agnóstico</h3>
+                        <ul>
+                            <li>Core logic independiente de plataforma de mensajes</li>
+                            <li>Capa de abstracción para orquestación</li>
+                            <li>Migración futura sin reescritura completa</li>
+                        </ul>
+                    </div>
+
+                    <div class="principle-block">
+                        <h3>♻️ Base Reutilizable</h3>
+                        <ul>
+                            <li>Patrones aplicables a otros procesos (renovaciones, cobranza, soporte)</li>
+                            <li>Componentes modulares y componibles</li>
+                            <li>Base de conocimiento centralizada</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column: Layers Diagram -->
+                <div class="layers-diagram">
+                    <div class="layer-stack">
+                        <div class="layer-row">
+                            <span class="layer-name">Capa Mensajería</span>
+                            <span class="layer-arrow">→</span>
+                            <div class="layer-icons">
+                                <span class="layer-icon">💬 WhatsApp</span>
+                                <span class="layer-icon">🌐 Web</span>
+                                <span class="layer-icon">🤖 Botpress</span>
+                            </div>
+                        </div>
+                        <div class="layer-row">
+                            <span class="layer-name">Capa Core Agentes</span>
+                            <span class="layer-arrow">→</span>
+                            <div class="layer-icons">
+                                <span class="layer-icon">🧠 Claude</span>
+                                <span class="layer-icon">🤖 GPT</span>
+                                <span class="layer-icon">✨ Gemini</span>
+                            </div>
+                        </div>
+                        <div class="layer-row">
+                            <span class="layer-name">Tools</span>
+                            <span class="layer-arrow">→</span>
+                            <div class="layer-icons">
+                                <span class="layer-icon">📊 Q10</span>
+                                <span class="layer-icon">📅 Agendamiento</span>
+                                <span class="layer-icon">💳 Pago</span>
+                            </div>
+                        </div>
+                        <div class="layer-row">
+                            <span class="layer-name">Integración</span>
+                            <span class="layer-arrow">→</span>
+                            <div class="layer-icons">
+                                <span class="layer-icon">📈 Looker</span>
+                                <span class="layer-icon">🔗 HubSpot</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infrastructure Section -->
+    <section class="infra-section">
+        <div class="infra-inner">
+            <div class="infra-header">
+                <h2>🏗️ Infraestructura Técnica</h2>
+            </div>
+
+            <div class="infra-diagram">
+                <!-- Layer 1: Channels -->
+                <div class="infra-layer">
+                    <div class="infra-layer-title">Canales</div>
+                    <div class="infra-boxes">
+                        <div class="infra-box channel">
+                            <div class="infra-box-icon">💬</div>
+                            <div class="infra-box-label">WhatsApp</div>
+                            <div class="infra-box-sub">Meta API</div>
+                        </div>
+                        <div class="infra-box channel">
+                            <div class="infra-box-icon">🌐</div>
+                            <div class="infra-box-label">Web Chat</div>
+                            <div class="infra-box-sub">Widget</div>
+                        </div>
+                        <div class="infra-box channel">
+                            <div class="infra-box-icon">📱</div>
+                            <div class="infra-box-label">Otros</div>
+                            <div class="infra-box-sub">Futuro</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-arrow">↓</div>
+
+                <!-- Layer 2: AI Agents -->
+                <div class="infra-layer">
+                    <div class="infra-layer-title">Agentes IA</div>
+                    <div class="infra-boxes" style="margin-bottom: 0.5rem;">
+                        <div class="infra-box orchestrator">
+                            <div class="infra-box-icon">🧠</div>
+                            <div class="infra-box-label">Orquestador</div>
+                            <div class="infra-box-sub">Cerebro IA</div>
+                        </div>
+                    </div>
+                    <div class="infra-boxes">
+                        <div class="infra-box agent">
+                            <div class="infra-box-icon">🤖</div>
+                            <div class="infra-box-label">Juli</div>
+                            <div class="infra-box-sub">Asesora</div>
+                        </div>
+                        <div class="infra-box agent">
+                            <div class="infra-box-icon">📅</div>
+                            <div class="infra-box-label">Leti</div>
+                            <div class="infra-box-sub">Agenda</div>
+                        </div>
+                        <div class="infra-box agent">
+                            <div class="infra-box-icon">❓</div>
+                            <div class="infra-box-label">Jarvis</div>
+                            <div class="infra-box-sub">FAQ</div>
+                        </div>
+                        <div class="infra-box agent">
+                            <div class="infra-box-icon">🎯</div>
+                            <div class="infra-box-label">Gail</div>
+                            <div class="infra-box-sub">Closer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-arrow">↓</div>
+
+                <!-- Layer 3: Models -->
+                <div class="infra-layer">
+                    <div class="infra-layer-title">Modelos (Agnóstico)</div>
+                    <div class="infra-boxes">
+                        <div class="infra-box model">
+                            <div class="infra-box-icon">🧠</div>
+                            <div class="infra-box-label">Claude Sonnet</div>
+                            <div class="infra-box-sub">Anthropic</div>
+                        </div>
+                        <div class="infra-box model">
+                            <div class="infra-box-icon">🤖</div>
+                            <div class="infra-box-label">GPT-4o</div>
+                            <div class="infra-box-sub">OpenAI</div>
+                        </div>
+                        <div class="infra-box model">
+                            <div class="infra-box-icon">✨</div>
+                            <div class="infra-box-label">Gemini Flash</div>
+                            <div class="infra-box-sub">Google</div>
+                        </div>
+                    </div>
+                    <p class="infra-note">Elegimos el mejor modelo para cada tarea</p>
+                </div>
+
+                <div class="infra-arrow">↓</div>
+
+                <!-- Layer 4: Data & Integrations -->
+                <div class="infra-layer">
+                    <div class="infra-layer-title">Datos e Integraciones</div>
+                    <div class="infra-boxes">
+                        <div class="infra-box integration">
+                            <div class="infra-box-icon">🔗</div>
+                            <div class="infra-box-label">HubSpot</div>
+                            <div class="infra-box-sub">CRM</div>
+                        </div>
+                        <div class="infra-box integration">
+                            <div class="infra-box-icon">📊</div>
+                            <div class="infra-box-label">Q10</div>
+                            <div class="infra-box-sub">Exports</div>
+                        </div>
+                        <div class="infra-box integration">
+                            <div class="infra-box-icon">📈</div>
+                            <div class="infra-box-label">Looker</div>
+                            <div class="infra-box-sub">Analytics</div>
+                        </div>
+                        <div class="infra-box integration">
+                            <div class="infra-box-icon">☁️</div>
+                            <div class="infra-box-label">Google Cloud</div>
+                            <div class="infra-box-sub">Hosting</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="infra-footer">
+                    <p class="infra-footer-text">☁️ 100% sobre <span>Google Cloud Platform</span> · Compatible con su stack actual</p>
+                </div>
             </div>
         </div>
     </section>
