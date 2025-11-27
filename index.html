@@ -1515,6 +1515,126 @@
             color: var(--cosmo-pink);
         }
 
+        /* Scope Section */
+        .scope-section {
+            padding: 4rem 2rem;
+            background: var(--bg-cream);
+        }
+
+        .scope-section .scope-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .scope-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .scope-header h2 {
+            font-size: 2rem;
+            color: var(--cosmo-blue);
+        }
+
+        .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scope-card {
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .scope-card.phase-a {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border: 2px solid #3b82f6;
+        }
+
+        .scope-card.phase-b {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 2px solid #22c55e;
+        }
+
+        .scope-card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .scope-card.phase-a .scope-card-title {
+            color: #1e40af;
+        }
+
+        .scope-card.phase-b .scope-card-title {
+            color: #166534;
+        }
+
+        .scope-card-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .scope-list {
+            list-style: none;
+            margin: 0 0 1.5rem 0;
+            padding: 0;
+        }
+
+        .scope-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .scope-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .scope-card.phase-a .scope-list li::before {
+            color: #3b82f6;
+        }
+
+        .scope-card.phase-b .scope-list li::before {
+            color: #22c55e;
+        }
+
+        .scope-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .scope-card.phase-a .scope-badge {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .scope-card.phase-b .scope-badge {
+            background: #22c55e;
+            color: white;
+        }
+
         /* CTA Section */
         .cta-section {
             padding: 4rem 2rem;
@@ -2322,6 +2442,45 @@
                 <div class="arch-node-label">CRM<br><small>Integración</small></div>
             </div>
         </div>
+        </div>
+    </section>
+
+    <!-- Scope Section -->
+    <section class="scope-section">
+        <div class="scope-inner">
+            <div class="scope-header">
+                <h2>🎯 Alcance: Enfoque de Implementación</h2>
+            </div>
+
+            <div class="scope-grid">
+                <!-- Phase A Card -->
+                <div class="scope-card phase-a">
+                    <div class="scope-card-title">(A) Reemplazar el flujo actual a un flujo conversacional atendido por agentes</div>
+                    <p class="scope-card-subtitle">Asegurando que cumplimos las mismas funciones actuales (Registro, FAQ, Inscripción) pero Mejorado:</p>
+                    <ul class="scope-list">
+                        <li>Conversacional y humano</li>
+                        <li>Inteligente → optimizado para convertir</li>
+                        <li>Mejor experiencia de usuario (sin preguntas innecesarias)</li>
+                        <li>Más preciso en intervención humana</li>
+                        <li>Routing inteligente para asignación a humanos</li>
+                    </ul>
+                    <span class="scope-badge">Fase A: Foundation</span>
+                </div>
+
+                <!-- Phase B Card -->
+                <div class="scope-card phase-b">
+                    <div class="scope-card-title">(B) Nuevas capacidades y funciones, exploración de use-cases para conversión</div>
+                    <p class="scope-card-subtitle">Desarrollo e incorporación de nuevas capacidades y funciones que hoy no se tiene en el flujo:</p>
+                    <ul class="scope-list">
+                        <li>Recuperación "Inconcluso Inscripción"</li>
+                        <li>Recuperación Activa "Lista de Espera"</li>
+                        <li>Cierre de Matrícula Post-Admisión</li>
+                        <li>Predicción y Prevención de No-Show Inmersiones</li>
+                        <li>Calificación Inteligente de Leads (Avanzada)</li>
+                    </ul>
+                    <span class="scope-badge">Fase B: Nuevas capacidades (Iterativo)</span>
+                </div>
+            </div>
         </div>
     </section>
 
